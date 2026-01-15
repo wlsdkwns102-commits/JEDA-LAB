@@ -60,7 +60,7 @@ const Problems: React.FC = () => (
              <div key={idx} className="space-y-6">
                 <span className="text-[10px] font-mono text-zinc-300">0{idx + 1}</span>
                 <h4 className="text-xl font-bold">{item.title}</h4>
-                <p className="text-zinc-500 text-sm leading-loose font-light">{item.desc}</p>
+                <p className="text-zinc-600 text-lg leading-relaxed font-light">{item.desc}</p>
              </div>
            ))}
         </div>
@@ -119,18 +119,15 @@ const GallerySection: React.FC<{ items: PortfolioItem[] }> = ({ items }) => {
           </div>
         </div>
         
-        {/* 모든 회색 배경을 흰색으로 변경하고 경계선을 깔끔하게 정리 */}
         <div className={`grid ${gridColsClass} gap-px bg-white border-zinc-100 border-x-px border-t-px`}>
           {displayItems.map((item) => (
             <div key={item.id} className="group bg-white p-8 sm:p-14 hover-lift border-b border-zinc-100">
-              {/* 텍스트 메타데이터를 상단으로 배치 (요청하신 이미지 구성 반영) */}
               <div className="space-y-6 mb-12">
                 <span className="text-[10px] uppercase font-bold tracking-[0.3em] text-zinc-300 block">{item.category}</span>
                 <h3 className="text-3xl font-serif font-bold leading-tight group-hover:italic transition-all max-w-sm">{item.title}</h3>
                 <Link to={`/work/${item.id}`} className="inline-block text-[9px] font-bold uppercase tracking-[0.3em] border-b border-black pb-1 pt-2">Discover</Link>
               </div>
 
-              {/* 이미지를 하단으로 배치 */}
               <Link to={`/work/${item.id}`} className="block overflow-hidden aspect-[4/3] bg-white">
                 <img 
                   src={item.thumbnail} 
@@ -203,12 +200,6 @@ const Process: React.FC = () => (
 const ContactSection: React.FC = () => {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [categoriesList, setCategoriesList] = useState<string[]>([]);
-
-  useEffect(() => {
-    const dynamicCats = getCategories().map(c => c.name);
-    setCategoriesList(dynamicCats);
-  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -245,10 +236,6 @@ const ContactSection: React.FC = () => {
                     <h4 className="text-[10px] uppercase font-bold text-zinc-300 tracking-[0.4em] mb-4">Email</h4>
                     <p className="text-2xl font-serif italic">hello@jdealab.design</p>
                 </div>
-                <div>
-                    <h4 className="text-[10px] uppercase font-bold text-zinc-300 tracking-[0.4em] mb-4">Location</h4>
-                    <p className="text-lg font-light">Seoul, Gangnam-gu, Teheran-ro 521</p>
-                </div>
             </div>
           </div>
 
@@ -263,14 +250,6 @@ const ContactSection: React.FC = () => {
                   <label className="text-[9px] uppercase font-bold tracking-[0.3em] text-zinc-300">Connection</label>
                   <input required type="tel" className="bg-transparent border-b border-zinc-200 py-4 focus:outline-none focus:border-black transition text-lg placeholder:text-zinc-200" placeholder="Phone or Email" />
                 </div>
-              </div>
-              <div className="flex flex-col space-y-4">
-                <label className="text-[9px] uppercase font-bold tracking-[0.3em] text-zinc-300">Service Category</label>
-                <select className="bg-transparent border-b border-zinc-200 py-4 focus:outline-none focus:border-black transition text-lg appearance-none cursor-pointer">
-                  <option value="">Select your need</option>
-                  {categoriesList.map(cat => <option key={cat} value={cat}>{cat}</option>)}
-                  <option value="other">General Inquiry</option>
-                </select>
               </div>
               <div className="flex flex-col space-y-4">
                 <label className="text-[9px] uppercase font-bold tracking-[0.3em] text-zinc-300">Brief</label>

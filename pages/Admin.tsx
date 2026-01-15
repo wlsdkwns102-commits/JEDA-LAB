@@ -55,10 +55,12 @@ export default function Admin() {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    if (password === '1111') {
+    // 비밀번호는 123454321
+    if (password === '123454321') {
       setIsAuthorized(true);
     } else {
       showStatus('Access Denied.', 'error');
+      setPassword('');
     }
   };
 
@@ -192,19 +194,30 @@ export default function Admin() {
 
   if (!isAuthorized) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-zinc-950 px-6">
-        <form onSubmit={handleLogin} className="bg-white p-12 w-full max-w-sm">
-          <h1 className="text-[10px] font-bold uppercase tracking-[0.4em] mb-12 text-center">Studio Access</h1>
-          <input 
-            autoFocus
-            type="password" 
-            value={password}
-            onChange={e => setPassword(e.target.value)}
-            placeholder="PIN (1111)"
-            className="w-full border-b border-zinc-200 py-4 mb-12 focus:outline-none focus:border-black text-center text-4xl tracking-tighter"
-          />
-          <button type="submit" className="w-full bg-black text-white py-6 text-[10px] font-bold uppercase tracking-[0.4em] hover:bg-zinc-800 transition">Enter</button>
-        </form>
+      <div className="min-h-screen flex items-center justify-center bg-black px-6">
+        <div className="bg-white p-12 sm:p-20 w-full max-w-lg aspect-square flex flex-col items-center justify-center shadow-2xl">
+          <form onSubmit={handleLogin} className="w-full max-w-xs flex flex-col items-center">
+            <h1 className="text-[12px] font-bold uppercase tracking-[0.5em] mb-20 text-center text-black">Studio Access</h1>
+            
+            <div className="w-full relative mb-16">
+              <input 
+                autoFocus
+                type="password" 
+                value={password}
+                onChange={e => setPassword(e.target.value)}
+                placeholder="패스워드"
+                className="w-full border-b border-black py-4 focus:outline-none text-center text-4xl tracking-tighter placeholder:text-zinc-300 placeholder:text-2xl"
+              />
+            </div>
+            
+            <button 
+              type="submit" 
+              className="w-full bg-black text-white py-6 text-[12px] font-bold uppercase tracking-[0.5em] hover:bg-zinc-800 transition-all duration-300 active:scale-95"
+            >
+              Enter
+            </button>
+          </form>
+        </div>
       </div>
     );
   }

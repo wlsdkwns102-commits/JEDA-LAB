@@ -83,28 +83,17 @@ const Footer: React.FC = () => {
     <footer className="bg-white py-32 border-t border-zinc-100">
       <div className="max-w-[1800px] mx-auto px-6 sm:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-20">
-          <div className="lg:col-span-6 space-y-12">
+          <div className="lg:col-span-8 space-y-12">
             <h3 className="text-4xl font-serif font-black italic editorial-spacing">JDEA_LAB</h3>
             <p className="text-zinc-500 text-lg font-light leading-relaxed max-w-md">
-              우리는 디자인이 비즈니스의 복잡함을 해결하는 가장 강력한 언어라고 믿습니다.
+              우리는 디자인이 비즈니스 문제를 해결하는 가장 강력한 언어라고 믿습니다.
             </p>
             <div className="flex space-x-8 text-[10px] font-bold uppercase tracking-widest">
                 <a href="#" className="hover:text-zinc-400 transition">Instagram</a>
-                <a href="#" className="hover:text-zinc-400 transition">Behance</a>
-                <a href="#" className="hover:text-zinc-400 transition">LinkedIn</a>
             </div>
           </div>
-          
-          <div className="lg:col-span-3 space-y-8">
-            <h4 className="text-[10px] font-bold uppercase tracking-[0.3em] text-zinc-300">Office</h4>
-            <p className="text-sm leading-loose">
-              Seoul, Republic of Korea<br />
-              Gangnam-gu, Teheran-ro 521<br />
-              T. +82 2 1234 5678
-            </p>
-          </div>
 
-          <div className="lg:col-span-3 space-y-8">
+          <div className="lg:col-span-4 space-y-8">
             <h4 className="text-[10px] font-bold uppercase tracking-[0.3em] text-zinc-300">Quick Path</h4>
             <ul className="space-y-4 text-sm font-medium">
               <li><button onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})} className="hover:underline">Top of page</button></li>
