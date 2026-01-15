@@ -41,7 +41,6 @@ const Navbar: React.FC = () => {
         {/* Desktop Menu */}
         <div className="hidden md:flex space-x-12 text-[10px] font-bold tracking-[0.2em] uppercase text-zinc-400">
           <button onClick={() => scrollToSection('#work')} className="hover:text-black transition">Work</button>
-          <button onClick={() => scrollToSection('#about')} className="hover:text-black transition">About</button>
           <button onClick={() => scrollToSection('#contact')} className="hover:text-black transition">Contact</button>
         </div>
 
@@ -68,7 +67,6 @@ const Navbar: React.FC = () => {
       <div className={`fixed inset-0 bg-white z-40 transition-all duration-700 ease-in-out ${isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
         <div className="flex flex-col h-full justify-center px-12 sm:px-24 space-y-4">
           <button onClick={() => scrollToSection('#work')} className="text-6xl sm:text-8xl font-serif font-bold text-left hover:italic transition-all duration-500">Work</button>
-          <button onClick={() => scrollToSection('#about')} className="text-6xl sm:text-8xl font-serif font-bold text-left hover:italic transition-all duration-500">About</button>
           <button onClick={() => scrollToSection('#contact')} className="text-6xl sm:text-8xl font-serif font-bold text-left hover:italic transition-all duration-500">Contact</button>
           <div className="pt-20">
              <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-zinc-300 mb-4">Direct Connection</p>

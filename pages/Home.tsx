@@ -1,7 +1,5 @@
-
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { INITIAL_PORTFOLIO, FAQS } from '../constants';
 import { PortfolioItem } from '../types';
 import { getPortfolioData, getCategories, getGalleryLayout } from '../store';
 
@@ -121,21 +119,25 @@ const GallerySection: React.FC<{ items: PortfolioItem[] }> = ({ items }) => {
           </div>
         </div>
         
-        <div className={`grid ${gridColsClass} gap-x-px gap-y-32 bg-zinc-100 border-zinc-100 border-x-px`}>
+        {/* 모든 회색 배경을 흰색으로 변경하고 경계선을 깔끔하게 정리 */}
+        <div className={`grid ${gridColsClass} gap-px bg-white border-zinc-100 border-x-px border-t-px`}>
           {displayItems.map((item) => (
-            <div key={item.id} className="group bg-white p-6 sm:p-12 hover-lift">
-              <Link to={`/work/${item.id}`} className="block overflow-hidden aspect-[4/5] mb-10 bg-zinc-50">
+            <div key={item.id} className="group bg-white p-8 sm:p-14 hover-lift border-b border-zinc-100">
+              {/* 텍스트 메타데이터를 상단으로 배치 (요청하신 이미지 구성 반영) */}
+              <div className="space-y-6 mb-12">
+                <span className="text-[10px] uppercase font-bold tracking-[0.3em] text-zinc-300 block">{item.category}</span>
+                <h3 className="text-3xl font-serif font-bold leading-tight group-hover:italic transition-all max-w-sm">{item.title}</h3>
+                <Link to={`/work/${item.id}`} className="inline-block text-[9px] font-bold uppercase tracking-[0.3em] border-b border-black pb-1 pt-2">Discover</Link>
+              </div>
+
+              {/* 이미지를 하단으로 배치 */}
+              <Link to={`/work/${item.id}`} className="block overflow-hidden aspect-[4/3] bg-white">
                 <img 
                   src={item.thumbnail} 
                   alt={item.title} 
                   className="w-full h-full object-cover transition-all duration-1000 grayscale group-hover:grayscale-0 group-hover:scale-105"
                 />
               </Link>
-              <div className="space-y-4">
-                <span className="text-[10px] uppercase font-bold tracking-[0.3em] text-zinc-300 block">{item.category}</span>
-                <h3 className="text-2xl font-serif font-bold leading-tight group-hover:italic transition-all">{item.title}</h3>
-                <Link to={`/work/${item.id}`} className="inline-block text-[9px] font-bold uppercase tracking-[0.3em] border-b border-black pb-1 pt-4">Discover</Link>
-              </div>
             </div>
           ))}
         </div>
