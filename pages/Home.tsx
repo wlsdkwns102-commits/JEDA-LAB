@@ -239,21 +239,21 @@ const ContactSection: React.FC = () => {
             </div>
           </div>
 
-          <div className="lg:col-span-7">
-            <form onSubmit={handleSubmit} className="space-y-16">
+          <div className="lg:col-span-7 flex justify-start">
+            <form onSubmit={handleSubmit} className="space-y-16 w-full max-w-2xl">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-16">
                 <div className="flex flex-col space-y-4">
                   <label className="text-[9px] uppercase font-bold tracking-[0.3em] text-zinc-300">Information</label>
-                  <input required type="text" className="bg-transparent border-b border-zinc-200 py-4 focus:outline-none focus:border-black transition text-lg placeholder:text-zinc-200" placeholder="Name or Company" />
+                  <input required type="text" className="bg-transparent border-b border-zinc-200 py-4 focus:outline-none focus:border-black transition text-lg placeholder:text-zinc-200" placeholder="이름 또는 기업명" />
                 </div>
                 <div className="flex flex-col space-y-4">
                   <label className="text-[9px] uppercase font-bold tracking-[0.3em] text-zinc-300">Connection</label>
-                  <input required type="tel" className="bg-transparent border-b border-zinc-200 py-4 focus:outline-none focus:border-black transition text-lg placeholder:text-zinc-200" placeholder="Phone or Email" />
+                  <input required type="tel" className="bg-transparent border-b border-zinc-200 py-4 focus:outline-none focus:border-black transition text-lg placeholder:text-zinc-200" placeholder="연락처 (전화번호 또는 이메일)" />
                 </div>
               </div>
               <div className="flex flex-col space-y-4">
                 <label className="text-[9px] uppercase font-bold tracking-[0.3em] text-zinc-300">Brief</label>
-                <textarea required rows={4} className="bg-transparent border-b border-zinc-200 py-4 focus:outline-none focus:border-black transition text-lg resize-none placeholder:text-zinc-200" placeholder="Tell us about your project" />
+                <textarea required rows={4} className="bg-transparent border-b border-zinc-200 py-4 focus:outline-none focus:border-black transition text-lg resize-none placeholder:text-zinc-200" placeholder="프로젝트에 대해 알려주세요" />
               </div>
               <div className="pt-10">
                 <button 
