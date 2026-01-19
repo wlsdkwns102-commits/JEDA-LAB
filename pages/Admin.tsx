@@ -134,24 +134,6 @@ export default function Admin() {
     }, 300);
   };
 
-  const handleStartEditCategory = (id: string) => {
-    const cat = categories.find(c => c.id === id);
-    if (cat) {
-      setEditingCategoryId(id);
-      setEditCategoryName(cat.name);
-    }
-  };
-
-  const handleSaveCategoryEdit = () => {
-    const trimmedName = editCategoryName.trim();
-    if (!trimmedName || !editingCategoryId) return;
-    const newList = categories.map(c => c.id === editingCategoryId ? { ...c, name: trimmedName } : c);
-    setCategoriesList(newList);
-    saveCategories(newList);
-    setEditingCategoryId(null);
-    showStatus('Updated.');
-  };
-
   const handleSave = () => {
     if (!form.title || !form.thumbnail || !form.category) return showStatus('Missing Data.', 'error');
     let newItems: PortfolioItem[];
@@ -248,6 +230,7 @@ export default function Admin() {
                    <label className="text-[9px] uppercase font-bold text-zinc-300 tracking-widest">Title</label>
                    <input type="text" value={form.title} onChange={e => setForm({...form, title: e.target.value})} className="w-full border-b border-zinc-100 py-3 focus:outline-none focus:border-black transition" />
                  </div>
+                 
                  <div className="grid grid-cols-2 gap-12">
                     <div className="space-y-4">
                       <label className="text-[9px] uppercase font-bold text-zinc-300 tracking-widest">Category</label>
@@ -260,11 +243,49 @@ export default function Admin() {
                       <input type="checkbox" checked={form.featured} onChange={e => setForm({...form, featured: e.target.checked})} className="block w-6 h-6 accent-black mt-2" />
                     </div>
                  </div>
-                 <div className="space-y-4">
-                   <label className="text-[9px] uppercase font-bold text-zinc-300 tracking-widest">Thumbnail</label>
-                   <input type="file" onChange={handleThumbnailUpload} className="w-full text-[10px] text-zinc-400" />
-                   {form.thumbnail && <img src={form.thumbnail} className="w-20 h-12 object-cover grayscale" alt="" />}
+
+                 <div className="grid grid-cols-2 gap-12">
+                   <div className="space-y-4">
+                     <label className="text-[9px] uppercase font-bold text-zinc-300 tracking-widest">Client</label>
+                     <input type="text" value={form.client} onChange={e => setForm({...form, client: e.target.value})} className="w-full border-b border-zinc-100 py-3 focus:outline-none focus:border-black transition" />
+                   </div>
+                   <div className="space-y-4">
+                     <label className="text-[9px] uppercase font-bold text-zinc-300 tracking-widest">Duration</label>
+                     <input type="text" value={form.duration} onChange={e => setForm({...form, duration: e.target.value})} className="w-full border-b border-zinc-100 py-3 focus:outline-none focus:border-black transition" />
+                   </div>
                  </div>
+
+                 <div className="space-y-4">
+                    <label className="text-[9px] uppercase font-bold text-zinc-300 tracking-widest">Summary</label>
+                    <textarea value={form.summary} onChange={e => setForm({...form, summary: e.target.value})} rows={2} className="w-full border-b border-zinc-100 py-3 focus:outline-none focus:border-black transition resize-none" />
+                 </div>
+
+                 <div className="space-y-4">
+                   <label className="text-[9px] uppercase font-bold text-zinc-300 tracking-widest">Thumbnail (Main Image)</label>
+                   <input ref={thumbnailInputRef} type="file" onChange={handleThumbnailUpload} className="w-full text-[10px] text-zinc-400" />
+                   {form.thumbnail && <img src={form.thumbnail} className="w-24 h-16 object-cover grayscale" alt="Thumbnail Preview" />}
+                 </div>
+
+                 <div className="space-y-4">
+                   <label className="text-[9px] uppercase font-bold text-zinc-300 tracking-widest">Project Gallery (Detailed Images)</label>
+                   <input ref={galleryInputRef} type="file" multiple onChange={handleGalleryUpload} className="w-full text-[10px] text-zinc-400" />
+                   {form.images && form.images.length > 0 && (
+                     <div className="grid grid-cols-3 gap-2 mt-4">
+                       {form.images.map((img, idx) => (
+                         <div key={idx} className="relative group/img aspect-video bg-zinc-50 border border-zinc-100 overflow-hidden">
+                           <img src={img} className="w-full h-full object-cover grayscale group-hover/img:grayscale-0 transition" alt={`Gallery ${idx}`} />
+                           <button 
+                             onClick={() => removeGalleryImage(idx)}
+                             className="absolute top-1 right-1 bg-white/80 text-black text-[8px] w-4 h-4 flex items-center justify-center opacity-0 group-hover/img:opacity-100 transition"
+                           >
+                             ×
+                           </button>
+                         </div>
+                       ))}
+                     </div>
+                   )}
+                 </div>
+
                  <div className="flex gap-4 pt-12">
                    <button type="button" onClick={handleSave} className="flex-1 bg-black text-white py-6 text-[10px] font-bold uppercase tracking-[0.3em] hover:bg-zinc-800 transition">Commit</button>
                    <button type="button" onClick={resetForm} className="flex-1 border border-black py-6 text-[10px] font-bold uppercase tracking-[0.3em] hover:bg-zinc-50 transition">Clear</button>

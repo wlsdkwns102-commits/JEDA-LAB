@@ -52,14 +52,14 @@ export default function CaseStudy() {
 
       {/* Hero Visual */}
       <section className="px-6 sm:px-12 mb-40">
-        <div className="max-w-[1800px] mx-auto aspect-[16/9] overflow-hidden bg-zinc-50">
+        <div className="max-w-[1200px] mx-auto aspect-[16/9] overflow-hidden bg-zinc-50">
           <img src={item.thumbnail} alt="Cover" className="w-full h-full object-cover" />
         </div>
       </section>
 
       {/* Narrative Section */}
       <section className="py-40 bg-zinc-50 px-6 sm:px-12">
-        <div className="max-w-[1800px] mx-auto">
+        <div className="max-w-[1200px] mx-auto">
            <div className="grid grid-cols-1 lg:grid-cols-12 gap-20">
               <div className="lg:col-span-4">
                   <h2 className="editorial-caps text-[10px] font-bold text-zinc-300 mb-8">Solution Strategy</h2>
@@ -84,7 +84,7 @@ export default function CaseStudy() {
       {/* Visual Gallery */}
       <section className="py-40 px-6 sm:px-12 space-y-px bg-zinc-100">
         {item.images.map((img, idx) => (
-          <div key={idx} className="max-w-[1800px] mx-auto bg-white p-12 sm:p-24 overflow-hidden">
+          <div key={idx} className="max-w-[1200px] mx-auto bg-white p-12 sm:p-24 overflow-hidden">
             <img src={img} alt={`Slide ${idx}`} className="w-full h-auto object-contain" />
           </div>
         ))}

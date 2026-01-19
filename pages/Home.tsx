@@ -132,7 +132,7 @@ const GallerySection: React.FC<{ items: PortfolioItem[] }> = ({ items }) => {
                 <img 
                   src={item.thumbnail} 
                   alt={item.title} 
-                  className="w-full h-full object-cover transition-all duration-1000 grayscale group-hover:grayscale-0 group-hover:scale-105"
+                  className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105"
                 />
               </Link>
             </div>
