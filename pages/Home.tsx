@@ -8,7 +8,7 @@ const Hero: React.FC = () => (
     <div className="max-w-[1800px] mx-auto w-full">
       <div className="space-y-12">
         <div className="overflow-hidden">
-           <span className="editorial-caps text-[10px] font-bold text-zinc-300 block mb-6 animate-slide-up">EST. 2024 / DESIGN STUDIO</span>
+           <span className="editorial-caps text-[10px] font-bold text-zinc-300 block mb-6 animate-slide-up">EST. 2024 / DESIGN STUDIO_테스트</span>
         </div>
         <h1 className="text-[12vw] sm:text-[10vw] font-serif font-black leading-[0.85] editorial-spacing tracking-tighter">
           Visual <br />
@@ -22,13 +22,13 @@ const Hero: React.FC = () => (
            </div>
            <div className="lg:col-span-7 flex justify-end">
               <div className="flex flex-col sm:flex-row gap-12">
-                 <button 
+                 <button
                   onClick={() => document.getElementById('work')?.scrollIntoView({behavior: 'smooth'})}
                   className="group relative overflow-hidden"
                  >
                     <span className="text-[10px] font-bold uppercase tracking-[0.3em] block border-b border-black pb-2 group-hover:text-zinc-400 group-hover:border-zinc-300 transition-all duration-500">Selected Work</span>
                  </button>
-                 <button 
+                 <button
                   onClick={() => document.getElementById('contact')?.scrollIntoView({behavior: 'smooth'})}
                   className="group relative overflow-hidden"
                  >
@@ -74,25 +74,25 @@ const GallerySection: React.FC<{ items: PortfolioItem[] }> = ({ items }) => {
   const [columns, setColumns] = useState<number>(3);
   const [limit, setLimit] = useState<number>(9);
   const [categoriesList, setCategoriesList] = useState<string[]>([]);
-  
+
   useEffect(() => {
     const dynamicCats = getCategories().map(c => c.name);
     setCategoriesList(['ALL', ...dynamicCats]);
-    
+
     const layoutCols = getGalleryLayout();
     setColumns(layoutCols);
     setLimit(layoutCols === 2 ? 8 : 9);
   }, []);
-  
-  const filteredItems = filter === 'ALL' 
-    ? items 
+
+  const filteredItems = filter === 'ALL'
+    ? items
     : items.filter(item => item.category === filter);
 
   const displayItems = filteredItems.slice(0, limit);
   const showMoreButton = filteredItems.length > limit;
 
-  const gridColsClass = columns === 2 
-    ? "grid-cols-1 sm:grid-cols-2" 
+  const gridColsClass = columns === 2
+    ? "grid-cols-1 sm:grid-cols-2"
     : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3";
 
   const defaultStep = columns === 2 ? 8 : 9;
@@ -105,7 +105,7 @@ const GallerySection: React.FC<{ items: PortfolioItem[] }> = ({ items }) => {
             <h2 className="text-[10px] font-bold uppercase tracking-[0.4em] text-zinc-300 mb-6">Works Index</h2>
             <h3 className="text-7xl font-serif font-black editorial-spacing">Selected.</h3>
           </div>
-          
+
           <div className="flex flex-wrap gap-x-12 gap-y-6 overflow-x-auto no-scrollbar">
             {categoriesList.map(cat => (
               <button
@@ -118,7 +118,7 @@ const GallerySection: React.FC<{ items: PortfolioItem[] }> = ({ items }) => {
             ))}
           </div>
         </div>
-        
+
         <div className={`grid ${gridColsClass} gap-px bg-white border-zinc-100 border-x-px border-t-px`}>
           {displayItems.map((item) => (
             <div key={item.id} className="group bg-white p-8 sm:p-14 hover-lift border-b border-zinc-100">
@@ -129,9 +129,9 @@ const GallerySection: React.FC<{ items: PortfolioItem[] }> = ({ items }) => {
               </div>
 
               <Link to={`/work/${item.id}`} className="block overflow-hidden aspect-[4/3] bg-white">
-                <img 
-                  src={item.thumbnail} 
-                  alt={item.title} 
+                <img
+                  src={item.thumbnail}
+                  alt={item.title}
                   className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105"
                 />
               </Link>
@@ -147,7 +147,7 @@ const GallerySection: React.FC<{ items: PortfolioItem[] }> = ({ items }) => {
 
         {showMoreButton && (
           <div className="mt-40 text-center">
-            <button 
+            <button
               onClick={() => setLimit(prev => prev + defaultStep)}
               className="text-[10px] font-bold uppercase tracking-[0.4em] border border-zinc-200 px-16 py-6 hover:bg-black hover:text-white transition-all duration-500"
             >
@@ -170,12 +170,12 @@ const Process: React.FC = () => (
          </div>
          <div className="lg:col-span-7 flex items-end">
             <p className="text-zinc-500 text-lg font-light leading-relaxed max-w-md">
-               우리는 모든 단계를 데이터와 논리에 근거하여 진행합니다. 
+               우리는 모든 단계를 데이터와 논리에 근거하여 진행합니다.
                투명한 프로세스는 클라이언트와 우리 사이의 가장 단단한 신뢰가 됩니다.
             </p>
          </div>
       </div>
-      
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-px bg-zinc-900">
         {[
           { step: "01", title: "Discovery", desc: "요구사항 분석 및 비즈니스 정렬" },
@@ -256,9 +256,9 @@ const ContactSection: React.FC = () => {
                 <textarea required rows={4} className="bg-transparent border-b border-zinc-200 py-4 focus:outline-none focus:border-black transition text-lg resize-none placeholder:text-zinc-200" placeholder="진행하시려는 프로젝트에 대해 자유롭게 들려주세요." />
               </div>
               <div className="pt-10">
-                <button 
+                <button
                     disabled={loading}
-                    type="submit" 
+                    type="submit"
                     className="w-full bg-black text-white py-8 text-[11px] font-bold uppercase tracking-[0.5em] hover:bg-zinc-800 transition-all duration-500 disabled:bg-zinc-200"
                 >
                   {loading ? 'Initializing...' : 'Dispatch Request'}
