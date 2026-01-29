@@ -528,7 +528,7 @@ const GallerySection: React.FC = () => {
 const TeamSection: React.FC = () => {
   const team = [
     {
-      name: 'Hyun jeong',
+      name: 'Hyunjung',
       role: 'Designer / 최현정',
       exp: 'Web UI·UI/UX·Visual Systems·Branding',
       image: user01,
@@ -540,7 +540,7 @@ const TeamSection: React.FC = () => {
       image: user02,
     },
     {
-      name: 'Yong gwan',
+      name: 'Yongkwan',
       role: 'Developer / 김용관',
       exp: 'Frontend·React·Service Architecture',
       image: user03,
