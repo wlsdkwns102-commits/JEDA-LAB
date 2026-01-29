@@ -37,7 +37,7 @@ const Navbar: React.FC = () => {
     <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${scrolled ? 'bg-white/95 backdrop-blur-md py-4 border-b border-zinc-100' : 'bg-transparent py-8'}`}>
       <div className="max-w-[1800px] mx-auto px-6 sm:px-12 flex items-center justify-between">
         <Link to="/" className="text-xl font-serif font-black tracking-tighter editorial-spacing">JDEA_LAB</Link>
-        
+
         {/* Desktop Menu */}
         <div className="hidden md:flex space-x-12 text-[10px] font-bold tracking-[0.2em] uppercase text-zinc-400">
           <button onClick={() => scrollToSection('#work')} className="hover:text-black transition">Work</button>
@@ -45,14 +45,14 @@ const Navbar: React.FC = () => {
         </div>
 
         <div className="flex items-center space-x-8">
-          <button 
-            onClick={() => scrollToSection('#contact')} 
+          <button
+            onClick={() => scrollToSection('#contact')}
             className="hidden sm:block text-[10px] font-bold uppercase tracking-[0.2em] border-b border-black pb-1 hover:text-zinc-400 hover:border-zinc-400 transition"
           >
             Inquiry
           </button>
-          
-          <button 
+
+          <button
             onClick={toggleMenu}
             className="flex flex-col justify-center items-end space-y-1 w-6 h-6 focus:outline-none z-50 relative"
           >
@@ -97,16 +97,20 @@ const Footer: React.FC = () => {
             <h4 className="text-[10px] font-bold uppercase tracking-[0.3em] text-zinc-300">Quick Path</h4>
             <ul className="space-y-4 text-sm font-medium">
               <li><button onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})} className="hover:underline">Top of page</button></li>
-              <li><Link to="/admin" className="hover:underline">Studio Admin</Link></li>
+              {/*
+                <li><Link to="/admin" className="hover:underline">Studio Admin</Link></li>
+              */}
             </ul>
           </div>
         </div>
-        
+
         <div className="mt-40 pt-12 border-t border-zinc-50 flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
-          <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-300">© 2024 JDEA LAB. ALL RIGHTS RESERVED.</p>
+          <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-300">© 2026 JDEA LAB. ALL RIGHTS RESERVED.</p>
           <div className="flex space-x-12 text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-300">
-            <a href="#" className="hover:text-black">Privacy Policy</a>
-            <a href="#" className="hover:text-black">Terms of Service</a>
+            {/*
+              <a href="#" className="hover:text-black">Privacy Policy</a>
+              <a href="#" className="hover:text-black">Terms of Service</a>
+            */}
           </div>
         </div>
       </div>

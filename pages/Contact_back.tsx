@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { getCategories } from '../store';
@@ -5,7 +6,7 @@ import { getCategories } from '../store';
 export default function Contact() {
   const [searchParams] = useSearchParams();
   const initialService = searchParams.get('service') || '';
-
+  
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [categoriesList, setCategoriesList] = useState<string[]>([]);
@@ -15,32 +16,15 @@ export default function Contact() {
     setCategoriesList(dynamicCats);
   }, []);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-
-    const formData = new FormData(e.currentTarget);
-    try {
-      const response = await fetch('https://formspree.io/f/mpqrqeje', {
-        method: 'POST',
-        body: formData,
-        headers: {
-          'Accept': 'application/json'
-        }
-      });
-
-      if (response.ok) {
+    // Simulate API call
+    setTimeout(() => {
+        setLoading(false);
         setSubmitted(true);
         window.scrollTo(0, 0);
-      } else {
-        alert('문의 제출 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.');
-      }
-    } catch (error) {
-      console.error('Submission error:', error);
-      alert('네트워크 오류가 발생했습니다.');
-    } finally {
-      setLoading(false);
-    }
+    }, 1500);
   };
 
   if (submitted) {
@@ -50,7 +34,7 @@ export default function Contact() {
                 <span className="text-6xl font-serif italic text-black block mb-8">Thank you.</span>
                 <h2 className="text-3xl font-bold mb-6">성공적으로 접수되었습니다!</h2>
                 <p className="text-gray-600 leading-relaxed mb-12">
-                    작성해 주신 내용을 검토 후, 영업일 기준 24시간 이내에 담당자가 연락드리겠습니다.
+                    작성해 주신 내용을 검토 후, 영업일 기준 24시간 이내에 담당자가 연락드리겠습니다. 
                     혹시 그 전에 준비해야 할 자료가 있다면 리스트업하여 이메일로 가이드라인을 먼저 보내드리겠습니다.
                 </p>
                 <div className="flex flex-col gap-4">
@@ -73,7 +57,7 @@ export default function Contact() {
               프로젝트에 대해 궁금한 점이 있으신가요? <br />
               간단한 내용만 남겨주시면 전문가가 바로 진단해 드립니다.
             </p>
-
+            
             <div className="space-y-12">
                 <div>
                     <h4 className="text-[10px] uppercase font-bold text-gray-400 tracking-widest mb-4">Direct Inquiry</h4>
@@ -86,7 +70,7 @@ export default function Contact() {
                 </div>
                 <div className="bg-zinc-50 p-8 border border-gray-100">
                     <p className="text-xs font-medium italic text-gray-600 leading-relaxed">
-                        "상담 신청 후 24시간 내에 회신을 원칙으로 합니다. <br />
+                        "상담 신청 후 24시간 내에 회신을 원칙으로 합니다. <br /> 
                         미팅 전에 필요한 체크리스트를 미리 발송해 드립니다."
                     </p>
                 </div>
@@ -98,17 +82,17 @@ export default function Contact() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                 <div className="flex flex-col space-y-3">
                   <label className="text-[10px] uppercase font-bold tracking-widest text-gray-400">Name / Company *</label>
-                  <input required name="name" type="text" className="border-b border-gray-200 py-3 focus:outline-none focus:border-black transition" placeholder="성함 또는 기업명" />
+                  <input required type="text" className="border-b border-gray-200 py-3 focus:outline-none focus:border-black transition" placeholder="성함 또는 기업명" />
                 </div>
                 <div className="flex flex-col space-y-3">
                   <label className="text-[10px] uppercase font-bold tracking-widest text-gray-400">Contact Number *</label>
-                  <input required name="contact" type="tel" className="border-b border-gray-200 py-3 focus:outline-none focus:border-black transition" placeholder="010-0000-0000" />
+                  <input required type="tel" className="border-b border-gray-200 py-3 focus:outline-none focus:border-black transition" placeholder="010-0000-0000" />
                 </div>
               </div>
 
               <div className="flex flex-col space-y-3">
                 <label className="text-[10px] uppercase font-bold tracking-widest text-gray-400">Project Type *</label>
-                <select name="project_type" defaultValue={initialService} className="border-b border-gray-200 py-3 focus:outline-none focus:border-black transition bg-transparent">
+                <select defaultValue={initialService} className="border-b border-gray-200 py-3 focus:outline-none focus:border-black transition bg-transparent">
                   <option value="">유형을 선택해주세요</option>
                   {categoriesList.map(cat => (
                     <option key={cat} value={cat}>{cat}</option>
@@ -120,7 +104,7 @@ export default function Contact() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                 <div className="flex flex-col space-y-3">
                   <label className="text-[10px] uppercase font-bold tracking-widest text-gray-400">Estimated Timeline</label>
-                  <select name="timeline" className="border-b border-gray-200 py-3 focus:outline-none focus:border-black transition bg-transparent">
+                  <select className="border-b border-gray-200 py-3 focus:outline-none focus:border-black transition bg-transparent">
                     <option value="">일정을 선택해주세요</option>
                     <option value="asap">ASAP (한달 이내)</option>
                     <option value="1-3">1 ~ 3개월 이내</option>
@@ -129,7 +113,7 @@ export default function Contact() {
                 </div>
                 <div className="flex flex-col space-y-3">
                   <label className="text-[10px] uppercase font-bold tracking-widest text-gray-400">Budget Range</label>
-                  <select name="budget" className="border-b border-gray-200 py-3 focus:outline-none focus:border-black transition bg-transparent">
+                  <select className="border-b border-gray-200 py-3 focus:outline-none focus:border-black transition bg-transparent">
                     <option value="">예산 범위를 선택해주세요</option>
                     <option value="low">500만원 이하</option>
                     <option value="mid">500 ~ 2,000만원</option>
@@ -140,18 +124,18 @@ export default function Contact() {
 
               <div className="flex flex-col space-y-3">
                 <label className="text-[10px] uppercase font-bold tracking-widest text-gray-400">Message *</label>
-                <textarea required name="message" rows={4} className="border-b border-gray-200 py-3 focus:outline-none focus:border-black transition resize-none" placeholder="프로젝트 목표나 궁금하신 점을 자유롭게 남겨주세요." />
+                <textarea required rows={4} className="border-b border-gray-200 py-3 focus:outline-none focus:border-black transition resize-none" placeholder="프로젝트 목표나 궁금하신 점을 자유롭게 남겨주세요." />
               </div>
 
               <div className="flex flex-col space-y-3">
                  <label className="text-[10px] uppercase font-bold tracking-widest text-gray-400">Reference Link (Optional)</label>
-                 <input name="reference_link" type="url" className="border-b border-gray-200 py-3 focus:outline-none focus:border-black transition" placeholder="https://..." />
+                 <input type="url" className="border-b border-gray-200 py-3 focus:outline-none focus:border-black transition" placeholder="https://..." />
               </div>
 
               <div className="pt-10">
-                <button
+                <button 
                     disabled={loading}
-                    type="submit"
+                    type="submit" 
                     className="w-full bg-black text-white py-6 text-sm font-bold uppercase tracking-widest hover:bg-zinc-800 transition disabled:bg-gray-400"
                 >
                   {loading ? 'Sending...' : 'Start Project Consultation'}
