@@ -1,4 +1,4 @@
-export default function Jina() {
+export default function Leejina() {
   return (
     <section style={{ padding: '80px' }}>
       <h1>Jina Page</h1>
