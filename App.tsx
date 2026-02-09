@@ -5,7 +5,7 @@ import { Layout } from './components/Layout';
 import Home from './pages/Home';
 import CaseStudy from './pages/CaseStudy';
 import Admin from './pages/Admin';
-import Leejina from './pages/Leejina';
+import Portfolio from './pages/Portfolio';
 
 const App: React.FC = () => {
   return (
@@ -15,7 +15,7 @@ const App: React.FC = () => {
           <Route path="/" element={<Home />} />
           <Route path="/work/:id" element={<CaseStudy />} />
           <Route path="/admin" element={<Admin />} />
-          <Route path="/leejina" element={<Leejina />} />
+          <Route path="/portfolio" element={<Portfolio />} />
         </Routes>
       </Layout>
     </Router>
