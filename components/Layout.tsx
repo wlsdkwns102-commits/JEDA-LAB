@@ -36,7 +36,7 @@ const Navbar: React.FC = () => {
   return (
     <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${scrolled ? 'bg-white/95 backdrop-blur-md py-4 border-b border-zinc-100' : 'bg-transparent py-8'}`}>
       <div className="max-w-[1800px] mx-auto px-6 sm:px-12 flex items-center justify-between">
-        <Link to="/" className="text-xl font-serif font-black tracking-tighter editorial-spacing">JDEA_LAB</Link>
+        <Link to="/" className="text-xl font-serif font-black tracking-tighter editorial-spacing">Portfolio</Link>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex space-x-12 text-[10px] font-bold tracking-[0.2em] uppercase text-zinc-400">
@@ -70,7 +70,7 @@ const Navbar: React.FC = () => {
           <button onClick={() => scrollToSection('#contact')} className="text-6xl sm:text-8xl font-serif font-bold text-left hover:italic transition-all duration-500">Contact</button>
           <div className="pt-20">
              <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-zinc-300 mb-4">Direct Connection</p>
-             <p className="text-xl font-serif italic">hello@jdealab.design</p>
+             <p className="text-xl font-serif italic">wlsdkwns@gmail.com</p>
           </div>
         </div>
       </div>
@@ -84,7 +84,7 @@ const Footer: React.FC = () => {
       <div className="max-w-[1800px] mx-auto px-6 sm:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-20">
           <div className="lg:col-span-8 space-y-12">
-            <h3 className="text-4xl font-serif font-black italic editorial-spacing">JDEA_LAB</h3>
+            <h3 className="text-4xl font-serif font-black italic editorial-spacing">Portfolio</h3>
             <p className="text-zinc-500 text-lg font-light leading-relaxed max-w-md">
               우리는 디자인이 비즈니스 문제를 해결하는 가장 강력한 언어라고 믿습니다.
             </p>
@@ -105,7 +105,7 @@ const Footer: React.FC = () => {
         </div>
 
         <div className="mt-40 pt-12 border-t border-zinc-50 flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
-          <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-300">© 2026 JDEA LAB. ALL RIGHTS RESERVED.</p>
+          <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-300">© 2026 Portfolio. ALL RIGHTS RESERVED.</p>
           <div className="flex space-x-12 text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-300">
             {/*
               <a href="#" className="hover:text-black">Privacy Policy</a>
