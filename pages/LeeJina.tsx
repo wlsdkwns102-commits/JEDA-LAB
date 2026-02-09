@@ -715,7 +715,7 @@ const ContactSection: React.FC = () => {
   );
 };
 
-export default function Home() {
+export default function Leejina() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -725,7 +725,6 @@ export default function Home() {
       <Hero />
       <Problems />
       <GallerySection />
-      <TeamSection />
       <Process />
       <ContactSection />
     </div>
