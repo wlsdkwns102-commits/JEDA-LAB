@@ -385,26 +385,23 @@ const GallerySection: React.FC = () => {
   const [filter, setFilter] = useState<string>('ALL');
 
   const columns = 3;
-  const defaultStep = columns === 2 ? 8 : 9;
-
-  const [limit, setLimit] = useState<number>(defaultStep);
+  const items = PORTFOLIO_ITEMS;
 
   const [modalOpen, setModalOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState<number>(-1);
-
-  const items = PORTFOLIO_ITEMS;
 
   const filteredItems = useMemo(() => {
     return filter === 'ALL' ? items : items.filter((item) => item.category === filter);
   }, [filter, items]);
 
-  const displayItems = filteredItems.slice(0, limit);
-  const showMoreButton = filteredItems.length > limit;
+  // ✅ 더보기 제거: 필터된 항목 전체를 그대로 사용
+  const displayItems = filteredItems;
 
   const gridColsClass =
     columns === 2 ? 'grid-cols-1 sm:grid-cols-2' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3';
 
   const openModalByItem = (item: PortfolioItem & { preview?: string; titleKr?: string }) => {
+    // ✅ displayItems가 전체라서 인덱스도 전체 기준으로 잡힘
     const idx = displayItems.findIndex((x) => x.id === item.id);
     setActiveIndex(idx);
     setModalOpen(true);
@@ -445,7 +442,6 @@ const GallerySection: React.FC = () => {
                 key={cat}
                 onClick={() => {
                   setFilter(cat);
-                  setLimit(defaultStep);
                   closeModal();
                 }}
                 className={`text-[10px] font-bold uppercase tracking-[0.2em] transition-all pb-2 border-b-2 ${
@@ -496,17 +492,6 @@ const GallerySection: React.FC = () => {
         {filteredItems.length === 0 && (
           <div className="py-40 text-center">
             <p className="text-zinc-400 italic font-serif">Empty portfolio index.</p>
-          </div>
-        )}
-
-        {showMoreButton && (
-          <div className="mt-40 text-center">
-            <button
-              onClick={() => setLimit((prev) => prev + defaultStep)}
-              className="text-[10px] font-bold uppercase tracking-[0.4em] border border-zinc-200 px-16 py-6 hover:bg-black hover:text-white transition-all duration-500"
-            >
-              Expand List
-            </button>
           </div>
         )}
       </div>
