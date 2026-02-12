@@ -1,10 +1,10 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { createPortal } from 'react-dom';
 import { PortfolioItem } from '../types';
 
-// ✅ 로컬 이미지 import (Vite/CRA 모두 안전한 방식)
-//상세페이
+// ✅ 로컬 이미지 import
+//상세페이지
 import detail001m from '../assets/images/detail-001-m.webp';
 import detail001s from '../assets/images/detail-001-s.webp';
 
@@ -14,7 +14,7 @@ import detail002s from '../assets/images/detail-002-s.webp';
 import detail003m from '../assets/images/detail-003-m.webp';
 import detail003s from '../assets/images/detail-003-s.webp';
 
-//유지보수
+//운영디자인
 import detail100m from '../assets/images/detail-100-m.webp';
 import detail100s from '../assets/images/detail-100-s.webp';
 
@@ -47,32 +47,88 @@ import detail202s from '../assets/images/detail-202-s.webp';
 import detail300m from '../assets/images/detail-300-m.webp';
 import detail300s from '../assets/images/detail-300-s.webp';
 
-
-
-
-// ✅ 팀 프로필 로컬 이미지 import (추가!)
-import user01 from '../assets/images/user-01.webp';
-import user02 from '../assets/images/user-02.webp';
-import user03 from '../assets/images/user-03.webp';
+// ✅ 미리캔버스 (assets/images/miri/)
+import miri100m from '../assets/images/miri/miri-100-m.webp';
+import miri100s from '../assets/images/miri/miri-100-s.webp';
+import miri101m from '../assets/images/miri/miri-101-m.webp';
+import miri101s from '../assets/images/miri/miri-101-s.webp';
+import miri102m from '../assets/images/miri/miri-102-m.webp';
+import miri102s from '../assets/images/miri/miri-102-s.webp';
+import miri103m from '../assets/images/miri/miri-103-m.webp';
+import miri103s from '../assets/images/miri/miri-103-s.webp';
+import miri104m from '../assets/images/miri/miri-104-m.webp';
+import miri104s from '../assets/images/miri/miri-104-s.webp';
+import miri105m from '../assets/images/miri/miri-105-m.webp';
+import miri105s from '../assets/images/miri/miri-105-s.webp';
 
 /**
- * ✅ 디자이너가 바로 수정하는 하드코딩 영역
- * - 탭 이름: WORK_CATEGORIES
- * - 포트폴리오 목록: PORTFOLIO_ITEMS
+ * ✅ 탭 이름
+ * - "미리캔버스" 카테고리 추가
  */
-// const WORK_CATEGORIES = ['ALL', '웹사이트', '상세페이지', '운영유지보수'] as const;
-const WORK_CATEGORIES = ['ALL', '웹사이트', '상세페이지', '운영디자인', '제안서·프레젠테이션'] as const;
-
-// ✅ (옵션) 기본 썸네일 URL (다른 항목용)
-const THUMBNAIL_URL = 'https://images.pexels.com/photos/35571707/pexels-photo-35571707.jpeg';
+const WORK_CATEGORIES = ['ALL', '웹사이트', '상세페이지', '운영디자인', '제안서·프레젠테이션', '미리캔버스'] as const;
 
 /**
- * ✅ 썸네일/모달 이미지 분리
- * - thumbnail: 카드에 보이는 썸네일 (m)
- * - preview: 모달에서 보이는 큰 이미지 (s)
- * - titleKr: 모달 상단에 표시할 한글 타이틀(프리텐다드)
+ * ✅ 포트폴리오 목록
+ * - thumbnail: 카드 썸네일 (m)
+ * - preview: 모달 큰 이미지 (s)
+ * - titleKr: 모달 한글 타이틀
  */
 const PORTFOLIO_ITEMS: (PortfolioItem & { preview?: string; titleKr?: string })[] = [
+
+  // =========================
+  // ✅ 미리캔버스
+  // =========================
+  {
+    id: 'miri-100',
+    title: 'MiriCanvas Design Assets',
+    titleKr: '미리캔버스 디자인 요소 제작',
+    category: '미리캔버스',
+    thumbnail: miri100m,
+    preview: miri100s,
+  },
+  {
+    id: 'miri-101',
+    title: 'MiriCanvas Design Assets',
+    titleKr: '미리캔버스 디자인 요소 제작',
+    category: '미리캔버스',
+    thumbnail: miri101m,
+    preview: miri101s,
+  },
+  {
+    id: 'miri-102',
+    title: 'MiriCanvas Design Assets',
+    titleKr: '미리캔버스 디자인 요소 제작',
+    category: '미리캔버스',
+    thumbnail: miri102m,
+    preview: miri102s,
+  },
+  {
+    id: 'miri-103',
+    title: 'MiriCanvas Design Assets',
+    titleKr: '미리캔버스 디자인 요소 제작',
+    category: '미리캔버스',
+    thumbnail: miri103m,
+    preview: miri103s,
+  },
+  {
+    id: 'miri-104',
+    title: 'MiriCanvas Design Assets',
+    titleKr: '미리캔버스 디자인 요소 제작',
+    category: '미리캔버스',
+    thumbnail: miri104m,
+    preview: miri104s,
+  },
+  {
+    id: 'miri-105',
+    title: 'MiriCanvas Design Assets',
+    titleKr: '미리캔버스 디자인 요소 제작',
+    category: '미리캔버스',
+    thumbnail: miri105m,
+    preview: miri105s,
+  },
+  // =========================
+  // 상세페이지
+  // =========================
   {
     id: 'detail-001',
     title: 'Travel Tour Detail Page Design',
@@ -97,6 +153,10 @@ const PORTFOLIO_ITEMS: (PortfolioItem & { preview?: string; titleKr?: string })[
     thumbnail: detail003m,
     preview: detail003s,
   },
+
+  // =========================
+  // 운영디자인
+  // =========================
   {
     id: 'ops-001',
     title: 'HYUNDAI LNG SHIPPING Additional Page Design & Publishing',
@@ -145,6 +205,10 @@ const PORTFOLIO_ITEMS: (PortfolioItem & { preview?: string; titleKr?: string })[
     thumbnail: detail105m,
     preview: detail105s,
   },
+
+  // =========================
+  // 웹사이트
+  // =========================
   {
     id: 'web-001',
     title: 'AI Parking Space Sharing Dashboard',
@@ -169,6 +233,10 @@ const PORTFOLIO_ITEMS: (PortfolioItem & { preview?: string; titleKr?: string })[
     thumbnail: detail202m,
     preview: detail202s,
   },
+
+  // =========================
+  // 제안서·프레젠테이션
+  // =========================
   {
     id: 'ppt-001',
     title: 'KIRBY Korea Business Proposal Design',
@@ -180,8 +248,8 @@ const PORTFOLIO_ITEMS: (PortfolioItem & { preview?: string; titleKr?: string })[
 ];
 
 type ModalData = {
-  title: string; // 영문
-  titleKr?: string; // 한글(프리텐다드)
+  title: string;
+  titleKr?: string;
   imageUrl: string;
 };
 
@@ -204,6 +272,8 @@ const ImageModal: React.FC<ImageModalProps> = ({
   canPrev,
   canNext,
 }) => {
+  const scrollRef = useRef<HTMLDivElement | null>(null);
+
   useEffect(() => {
     if (!isOpen) return;
 
@@ -222,6 +292,14 @@ const ImageModal: React.FC<ImageModalProps> = ({
       document.body.style.overflow = prevOverflow;
     };
   }, [isOpen, onClose, onPrev, onNext]);
+
+  // ✅ Next/Prev로 이미지가 바뀔 때마다 스크롤을 최상단으로
+  useEffect(() => {
+    if (!isOpen) return;
+    const el = scrollRef.current;
+    if (!el) return;
+    el.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+  }, [isOpen, data?.imageUrl]);
 
   if (!isOpen || !data) return null;
 
@@ -287,7 +365,7 @@ const ImageModal: React.FC<ImageModalProps> = ({
           </div>
         </div>
 
-        <div className="max-h-[80vh] overflow-y-auto">
+        <div ref={scrollRef} className="max-h-[80vh] overflow-y-auto">
           <img src={data.imageUrl} alt={data.title} className="w-full h-auto object-contain" />
         </div>
 
@@ -300,91 +378,9 @@ const ImageModal: React.FC<ImageModalProps> = ({
   );
 };
 
-const Hero: React.FC = () => (
-  <section id="hero" className="relative min-h-screen flex items-center bg-white px-6 sm:px-12 pt-20">
-    <div className="max-w-[1800px] mx-auto w-full">
-      <div className="space-y-12">
-        <div className="overflow-hidden">
-          <span className="editorial-caps text-[10px] font-bold text-zinc-300 block mb-6 animate-slide-up">
-            DESIGN STUDIO
-          </span>
-        </div>
-
-        <h1 className="text-[12vw] sm:text-[10vw] font-serif font-black leading-[0.85] editorial-spacing tracking-tighter">
-          Visual <br />
-          <span className="italic font-normal ml-[5vw]">Intelligence.</span>
-        </h1>
-
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 pt-20 items-end">
-          <div className="lg:col-span-5">
-            <p className="text-xl sm:text-2xl text-zinc-500 font-light leading-relaxed max-w-lg">
-              우리는 단순한 '아름다움'을 넘어, 비즈니스의 본질을 꿰뚫는 전략적 디자인을 통해 복잡한 문제를 명쾌한 시각적
-              솔루션으로 풀어냅니다.
-            </p>
-          </div>
-
-          <div className="lg:col-span-7 flex justify-end">
-            <div className="flex flex-col sm:flex-row gap-12">
-              <button
-                onClick={() => document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' })}
-                className="group relative overflow-hidden"
-              >
-                <span className="text-[10px] font-bold uppercase tracking-[0.3em] block border-b border-black pb-2 group-hover:text-zinc-400 group-hover:border-zinc-300 transition-all duration-500">
-                  Selected Work
-                </span>
-              </button>
-
-              <button
-                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                className="group relative overflow-hidden"
-              >
-                <span className="text-[10px] font-bold uppercase tracking-[0.3em] block border-b border-black pb-2 group-hover:text-zinc-400 group-hover:border-zinc-300 transition-all duration-500">
-                  Contact Us
-                </span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-);
-
-/** ✅ What we solve 영역 (첫 번째 코드의 Problems 그대로) */
-const Problems: React.FC = () => (
-  <section className="py-40 bg-white px-6 sm:px-12 border-y border-zinc-100">
-    <div className="max-w-[1800px] mx-auto">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-20">
-        <div className="lg:col-span-4">
-          <h2 className="editorial-caps text-[10px] font-bold text-zinc-300 mb-8">What we solve</h2>
-          <h3 className="text-5xl font-serif font-bold italic leading-tight">
-            Design is <br /> Problem Solving.
-          </h3>
-        </div>
-
-        <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-32">
-          {[
-            { title: 'Strategic Positioning', desc: '브랜드가 시장에서 가져야 할 고유한 목소리를 디자인으로 치환합니다.' },
-            { title: 'Conversion Optimized', desc: '사용자의 심리를 분석하여 목표한 행동을 유도하는 인터페이스를 설계합니다.' },
-            { title: 'Systemic Thinking', desc: '단발성 작업이 아닌, 성장을 지속할 수 있는 확장 가능한 시스템을 구축합니다.' },
-            { title: 'Seamless Collaboration', desc: '개발 효율성을 극대화하는 완벽한 가이드와 소통 체계를 지향합니다.' },
-          ].map((item, idx) => (
-            <div key={idx} className="space-y-6">
-              <span className="text-[10px] font-mono text-zinc-300">0{idx + 1}</span>
-              <h4 className="text-xl font-bold">{item.title}</h4>
-              <p className="text-zinc-600 text-lg leading-relaxed font-light">{item.desc}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  </section>
-);
-
 const GallerySection: React.FC = () => {
   const [filter, setFilter] = useState<string>('ALL');
 
-  const columns = 3;
   const items = PORTFOLIO_ITEMS;
 
   const [modalOpen, setModalOpen] = useState(false);
@@ -394,14 +390,10 @@ const GallerySection: React.FC = () => {
     return filter === 'ALL' ? items : items.filter((item) => item.category === filter);
   }, [filter, items]);
 
-  // ✅ 더보기 제거: 필터된 항목 전체를 그대로 사용
+  // ✅ 더보기 제거: 전체 노출
   const displayItems = filteredItems;
 
-  const gridColsClass =
-    columns === 2 ? 'grid-cols-1 sm:grid-cols-2' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3';
-
   const openModalByItem = (item: PortfolioItem & { preview?: string; titleKr?: string }) => {
-    // ✅ displayItems가 전체라서 인덱스도 전체 기준으로 잡힘
     const idx = displayItems.findIndex((x) => x.id === item.id);
     setActiveIndex(idx);
     setModalOpen(true);
@@ -430,6 +422,32 @@ const GallerySection: React.FC = () => {
   return (
     <section id="work" className="py-40 bg-white px-6 sm:px-12">
       <div className="max-w-[1800px] mx-auto">
+        <div className="flex flex-col sm:flex-row sm:items-start gap-12 mb-20">
+          <div>
+            <h4 className="text-[10px] uppercase font-bold text-zinc-300 tracking-[0.4em] mb-4">
+              Name
+            </h4>
+            <p className="text-2xl font-serif italic">
+              Lee Jin A{" "}
+              <span
+                className="not-italic text-base ml-2"
+                style={{
+                  fontFamily:
+                    "Pretendard, system-ui, -apple-system, Segoe UI, Roboto, sans-serif",
+                }}
+              >
+                (이진아)
+              </span>
+            </p>
+          </div>
+
+          <div>
+            <h4 className="text-[10px] uppercase font-bold text-zinc-300 tracking-[0.4em] mb-4">
+              Email
+            </h4>
+            <p className="text-2xl font-serif italic">wlsdkwns@naver.com</p>
+          </div>
+        </div>
         <div className="flex flex-col lg:flex-row justify-between lg:items-end mb-24 space-y-12 lg:space-y-0">
           <div>
             <h2 className="text-[10px] font-bold uppercase tracking-[0.4em] text-zinc-300 mb-6">Works Index</h2>
@@ -454,7 +472,7 @@ const GallerySection: React.FC = () => {
           </div>
         </div>
 
-        <div className={`grid ${gridColsClass} gap-px bg-white border-zinc-100 border-x-px border-t-px`}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-white border-zinc-100 border-x-px border-t-px">
           {displayItems.map((item) => (
             <div key={item.id} className="group bg-white p-8 sm:p-14 hover-lift border-b border-zinc-100">
               <div className="space-y-6 mb-12">
@@ -464,13 +482,13 @@ const GallerySection: React.FC = () => {
                 <h3 className="text-3xl font-serif font-bold leading-tight group-hover:italic transition-all max-w-sm">
                   {item.title}
                 </h3>
-
+                {/*
                 <Link
                   to={`/work/${item.id}`}
                   className="inline-block text-[9px] font-bold uppercase tracking-[0.3em] border-b border-black pb-1 pt-2"
                 >
                   Discover
-                </Link>
+                </Link>*/}
               </div>
 
               <button
@@ -509,197 +527,6 @@ const GallerySection: React.FC = () => {
   );
 };
 
-
-/** ✅ Methodology 영역 (첫 번째 코드의 Process 그대로) */
-const Process: React.FC = () => (
-  <section className="py-40 bg-zinc-950 text-white px-6 sm:px-12">
-    <div className="max-w-[1800px] mx-auto">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 mb-32">
-        <div className="lg:col-span-5">
-          <h2 className="editorial-caps text-[10px] font-bold text-zinc-700 mb-8">Methodology</h2>
-          <h3 className="text-6xl font-serif leading-tight">
-            Structured <br /> <span className="italic">Execution.</span>
-          </h3>
-        </div>
-        <div className="lg:col-span-7 flex items-end">
-          <p className="text-zinc-500 text-lg font-light leading-relaxed max-w-md">
-            우리는 모든 단계를 데이터와 논리에 근거하여 진행합니다. 투명한 프로세스는 클라이언트와 우리 사이의 가장 단단한
-            신뢰가 됩니다.
-          </p>
-        </div>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-px bg-zinc-900">
-        {[
-          { step: '01', title: 'Discovery', desc: '요구사항 분석 및 비즈니스 정렬' },
-          { step: '02', title: 'Structure', desc: '사용자 중심의 IA 및 골격 설계' },
-          { step: '03', title: 'Design', desc: '시각적 전략 및 시스템 구축' },
-          { step: '04', title: 'Development', desc: '고성능 퍼블리싱 및 검수' },
-          { step: '05', title: 'Expansion', desc: '런칭 후 지속적 성장을 위한 지원' },
-        ].map((item, idx) => (
-          <div key={idx} className="bg-zinc-950 p-12 space-y-12 hover:bg-zinc-900 transition-all duration-700">
-            <span className="block text-4xl font-serif italic text-zinc-800">{item.step}</span>
-            <div className="space-y-4">
-              <h4 className="text-[10px] font-bold uppercase tracking-[0.3em]">{item.title}</h4>
-              <p className="text-zinc-500 text-xs leading-relaxed font-light">{item.desc}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-);
-
-/** ✅ Start a Project 영역 (첫 번째 코드의 ContactSection 그대로) */
-const ContactSection: React.FC = () => {
-  const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
-
-  // const handleSubmit = (e: React.FormEvent) => {
-  //   e.preventDefault();
-  //   setLoading(true);
-  //   setTimeout(() => {
-  //     setLoading(false);
-  //     setSubmitted(true);
-  //   }, 1500);
-  // };
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-  e.preventDefault();
-  setLoading(true);
-
-  const formData = new FormData(e.currentTarget);
-
-  try {
-    const response = await fetch('https://formspree.io/f/mpqrqeje', {
-      method: 'POST',
-      body: formData,
-      headers: { Accept: 'application/json' },
-    });
-
-    if (response.ok) {
-      setSubmitted(true);
-      e.currentTarget.reset(); // 선택: 전송 후 폼 비우기
-    } else {
-      alert('문의 제출 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.');
-    }
-  } catch (err) {
-    console.error(err);
-    alert('네트워크 오류가 발생했습니다.');
-  } finally {
-    setLoading(false);
-  }
-};
-
-  if (submitted) {
-    return (
-      <section id="contact" className="py-60 bg-white flex items-center justify-center px-6">
-        <div className="max-w-xl text-center">
-          <h2 className="text-8xl font-serif italic editorial-spacing mb-8">Confirmed.</h2>
-          <p className="text-zinc-500 text-lg font-light leading-relaxed mb-12">
-            문의가 성공적으로 접수되었습니다. <br />
-            24시간 내에 전문 디렉터가 연락드리겠습니다.
-          </p>
-          <button
-            onClick={() => setSubmitted(false)}
-            className="text-[10px] font-bold uppercase tracking-[0.3em] border-b border-black pb-2"
-          >
-            Send Another
-          </button>
-        </div>
-      </section>
-    );
-  }
-
-  return (
-    <section id="contact" className="py-40 bg-white px-6 sm:px-12">
-      <div className="max-w-[1800px] mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-32">
-          <div className="lg:col-span-5 space-y-16">
-            <h1 className="text-8xl sm:text-[10vw] font-serif font-black leading-[0.85] tracking-tighter">
-              Start a <br />
-              <span className="italic font-normal">Project.</span>
-            </h1>
-
-            <div className="space-y-12">
-              <div>
-                <h4 className="text-[10px] uppercase font-bold text-zinc-300 tracking-[0.4em] mb-4">Email</h4>
-                <p className="text-2xl font-serif italic">wlsdkwns@gmail.com</p>
-              </div>
-              <div className="pt-4">
-                <a
-                  href="https://open.kakao.com/o/sJDEALAB"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative inline-flex items-center justify-between w-full max-w-xs bg-black text-white px-8 py-6 overflow-hidden transition-all duration-500"
-                >
-                  <div className="absolute top-0 left-0 w-1.5 h-full bg-[#FEE500]"></div>
-                  <div className="relative z-10 flex flex-col items-start transition-opacity duration-300 group-hover:opacity-0">
-                    <span className="text-[8px] font-black uppercase tracking-[0.2em] text-zinc-400 group-hover:text-white/50 mb-1">카카오톡 문의</span>
-                    <span className="text-[10px] font-black uppercase tracking-[0.3em]">Connect KakaoTalk</span>
-                  </div>
-                  <span className="relative z-10 text-xl transform transition-all duration-300 group-hover:translate-x-2 group-hover:text-black">→</span>
-                  <div className="absolute inset-0 bg-[#FEE500] translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
-                  <span className="absolute inset-0 flex items-center justify-center text-black text-[10px] font-black uppercase tracking-[0.3em] translate-y-full group-hover:translate-y-0 transition-transform duration-500">Open Kakao Chat</span>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div className="lg:col-span-7 flex justify-end">
-            <form onSubmit={handleSubmit} className="space-y-16 w-full max-w-xl">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-16">
-                <div className="flex flex-col space-y-4">
-                  <label className="text-[9px] uppercase font-bold tracking-[0.3em] text-zinc-300">Information</label>
-                  <input
-                    required
-                    name="name"
-                    type="text"
-                    className="bg-transparent border-b border-zinc-200 py-4 focus:outline-none focus:border-black transition text-lg placeholder:text-zinc-200"
-                    placeholder="성함 또는 기업명"
-                  />
-                </div>
-
-                <div className="flex flex-col space-y-4">
-                  <label className="text-[9px] uppercase font-bold tracking-[0.3em] text-zinc-300">Connection</label>
-                  <input
-                    required
-                    name="email"
-                    type="email"
-                    className="bg-transparent border-b border-zinc-200 py-4 focus:outline-none focus:border-black transition text-lg placeholder:text-zinc-200"
-                    placeholder="이메일"
-                  />
-                </div>
-              </div>
-
-              <div className="flex flex-col space-y-4">
-                <label className="text-[9px] uppercase font-bold tracking-[0.3em] text-zinc-300">Brief</label>
-                <textarea
-                  required
-                  name="message"
-                  rows={4}
-                  className="bg-transparent border-b border-zinc-200 py-4 focus:outline-none focus:border-black transition text-lg resize-none placeholder:text-zinc-200"
-                  placeholder="진행하시려는 프로젝트에 대해 자유롭게 들려주세요."
-                />
-              </div>
-
-              <div className="pt-10">
-                <button
-                  disabled={loading}
-                  type="submit"
-                  className="w-full bg-black text-white py-8 text-[11px] font-bold uppercase tracking-[0.5em] hover:bg-zinc-800 transition-all duration-500 disabled:bg-zinc-200"
-                >
-                  {loading ? 'Initializing...' : 'Send Message'}
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-};
-
 export default function PortfolioLeejina() {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -707,11 +534,7 @@ export default function PortfolioLeejina() {
 
   return (
     <div className="fade-in scroll-smooth">
-      <Hero />
-      <Problems />
       <GallerySection />
-      <Process />
-      <ContactSection />
     </div>
   );
 }

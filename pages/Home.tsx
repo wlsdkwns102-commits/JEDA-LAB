@@ -1,10 +1,11 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { createPortal } from 'react-dom';
 import { PortfolioItem } from '../types';
 
+
 // ✅ 로컬 이미지 import (Vite/CRA 모두 안전한 방식)
-//상세페이
+//상세페이지
 import detail001m from '../assets/images/detail-001-m.webp';
 import detail001s from '../assets/images/detail-001-s.webp';
 
@@ -14,7 +15,55 @@ import detail002s from '../assets/images/detail-002-s.webp';
 import detail003m from '../assets/images/detail-003-m.webp';
 import detail003s from '../assets/images/detail-003-s.webp';
 
-//유지보수
+import detail004m from '../assets/images/detail-004-m.webp';
+import detail004s from '../assets/images/detail-004-s.webp';
+
+import detail005m from '../assets/images/detail-005-m.webp';
+import detail005s from '../assets/images/detail-005-s.webp';
+
+import detail006m from '../assets/images/detail-006-m.webp';
+import detail006s from '../assets/images/detail-006-s.webp';
+
+import detail007m from '../assets/images/detail-007-m.webp';
+import detail007s from '../assets/images/detail-007-s.webp';
+
+import detail008m from '../assets/images/detail-008-m.webp';
+import detail008s from '../assets/images/detail-008-s.webp';
+
+import detail009m from '../assets/images/detail-009-m.webp';
+import detail009s from '../assets/images/detail-009-s.webp';
+
+import detail010m from '../assets/images/detail-010-m.webp';
+import detail010s from '../assets/images/detail-010-s.webp';
+
+import detail011m from '../assets/images/detail-011-m.webp';
+import detail011s from '../assets/images/detail-011-s.webp';
+
+import detail012m from '../assets/images/detail-012-m.webp';
+import detail012s from '../assets/images/detail-012-s.webp';
+
+import detail013m from '../assets/images/detail-013-m.webp';
+import detail013s from '../assets/images/detail-013-s.webp';
+
+import detail014m from '../assets/images/detail-014-m.webp';
+import detail014s from '../assets/images/detail-014-s.webp';
+
+import detail015m from '../assets/images/detail-015-m.webp';
+import detail015s from '../assets/images/detail-015-s.webp';
+
+import detail016m from '../assets/images/detail-016-m.webp';
+import detail016s from '../assets/images/detail-016-s.webp';
+
+import detail017m from '../assets/images/detail-017-m.webp';
+import detail017s from '../assets/images/detail-017-s.webp';
+
+import detail018m from '../assets/images/detail-018-m.webp';
+import detail018s from '../assets/images/detail-018-s.webp';
+
+import detail019m from '../assets/images/detail-019-m.webp';
+import detail019s from '../assets/images/detail-019-s.webp';
+
+//운영디자인
 import detail100m from '../assets/images/detail-100-m.webp';
 import detail100s from '../assets/images/detail-100-s.webp';
 
@@ -33,6 +82,31 @@ import detail104s from '../assets/images/detail-104-s.webp';
 import detail105m from '../assets/images/detail-105-m.webp';
 import detail105s from '../assets/images/detail-105-s.webp';
 
+
+//이벤트페이지
+import detail400m from '../assets/images/detail-400-m.webp';
+import detail400s from '../assets/images/detail-400-s.webp';
+
+import detail401m from '../assets/images/detail-401-m.webp';
+import detail401s from '../assets/images/detail-401-s.webp';
+
+import detail402m from '../assets/images/detail-402-m.webp';
+import detail402s from '../assets/images/detail-402-s.webp';
+
+import detail403m from '../assets/images/detail-403-m.webp';
+import detail403s from '../assets/images/detail-403-s.webp';
+
+import detail404m from '../assets/images/detail-404-m.webp';
+import detail404s from '../assets/images/detail-404-s.webp';
+
+import detail405m from '../assets/images/detail-405-m.webp';
+import detail405s from '../assets/images/detail-405-s.webp';
+
+import detail406m from '../assets/images/detail-406-m.webp';
+import detail406s from '../assets/images/detail-406-s.webp';
+
+
+
 //웹사이트
 import detail200m from '../assets/images/detail-200-m.webp';
 import detail200s from '../assets/images/detail-200-s.webp';
@@ -42,6 +116,33 @@ import detail201s from '../assets/images/detail-201-s.webp';
 
 import detail202m from '../assets/images/detail-202-m.webp';
 import detail202s from '../assets/images/detail-202-s.webp';
+
+import detail203m from '../assets/images/detail-203-m.webp';
+import detail203s from '../assets/images/detail-203-s.webp';
+
+import detail204m from '../assets/images/detail-204-m.webp';
+import detail204s from '../assets/images/detail-204-s.webp';
+
+import detail205m from '../assets/images/detail-205-m.webp';
+import detail205s from '../assets/images/detail-205-s.webp';
+
+import detail206m from '../assets/images/detail-206-m.webp';
+import detail206s from '../assets/images/detail-206-s.webp';
+
+import detail207m from '../assets/images/detail-207-m.webp';
+import detail207s from '../assets/images/detail-207-s.webp';
+
+import detail208m from '../assets/images/detail-208-m.webp';
+import detail208s from '../assets/images/detail-208-s.webp';
+
+import detail209m from '../assets/images/detail-209-m.webp';
+import detail209s from '../assets/images/detail-209-s.webp';
+
+import detail210m from '../assets/images/detail-210-m.webp';
+import detail210s from '../assets/images/detail-210-s.webp';
+
+import detail211m from '../assets/images/detail-211-m.webp';
+import detail211s from '../assets/images/detail-211-s.webp';
 
 //프레젠테이션
 import detail300m from '../assets/images/detail-300-m.webp';
@@ -98,6 +199,134 @@ const PORTFOLIO_ITEMS: (PortfolioItem & { preview?: string; titleKr?: string })[
     preview: detail003s,
   },
   {
+  id: 'detail-004',
+  title: 'Food Detail Page Design',
+  titleKr: '제철맞은 가리비 상세페이지 디자인',
+  category: '상세페이지',
+  thumbnail: detail004m,
+  preview: detail004s,
+  },
+  {
+    id: 'detail-005',
+    title: 'Food Detail Page Design',
+    titleKr: '간장게장, 양념게장 상세페이지 디자인',
+    category: '상세페이지',
+    thumbnail: detail005m,
+    preview: detail005s,
+  },
+  {
+    id: 'detail-006',
+    title: 'Food Detail Page Design',
+    titleKr: '햇 조생감귤 상세페이지 디자인',
+    category: '상세페이지',
+    thumbnail: detail006m,
+    preview: detail006s,
+  },
+  {
+    id: 'detail-007',
+    title: 'Food Detail Page Design',
+    titleKr: '맛깔나는 해풍김치 상세페이지 디자인',
+    category: '상세페이지',
+    thumbnail: detail007m,
+    preview: detail007s,
+  },
+  {
+    id: 'detail-008',
+    title: 'Food Detail Page Design',
+    titleKr: '해남 절임배추 상세페이지 디자인',
+    category: '상세페이지',
+    thumbnail: detail008m,
+    preview: detail008s,
+  },
+  {
+    id: 'detail-009',
+    title: 'Food Detail Page Design',
+    titleKr: '햇부사 상세페이지 디자인',
+    category: '상세페이지',
+    thumbnail: detail009m,
+    preview: detail009s,
+  },
+  {
+    id: 'detail-010',
+    title: 'Food Detail Page Design',
+    titleKr: '박달홍게 상세페이지 디자인',
+    category: '상세페이지',
+    thumbnail: detail010m,
+    preview: detail010s,
+  },
+  {
+    id: 'detail-011',
+    title: 'Living Product Detail Page Design',
+    titleKr: '웰라이브 식탁매트 상세페이지 디자인',
+    category: '상세페이지',
+    thumbnail: detail011m,
+    preview: detail011s,
+  },
+  {
+    id: 'detail-012',
+    title: 'Living Product Detail Page Design',
+    titleKr: '카피바라 세븐톡 상세페이지 디자인',
+    category: '상세페이지',
+    thumbnail: detail012m,
+    preview: detail012s,
+  },
+  {
+    id: 'detail-013',
+    title: 'Electronics Detail Page Design',
+    titleKr: '엑스박스 게임 컨트롤러 상세페이지 디자인',
+    category: '상세페이지',
+    thumbnail: detail013m,
+    preview: detail013s,
+  },
+  {
+    id: 'detail-014',
+    title: 'Electronics Detail Page Design',
+    titleKr: '미니 손 서큘레이터 상세페이지 디자인',
+    category: '상세페이지',
+    thumbnail: detail014m,
+    preview: detail014s,
+  },
+  {
+    id: 'detail-015',
+    title: 'Fashion Detail Page Design',
+    titleKr: '꽃길만 슬리퍼 상세페이지 디자인',
+    category: '상세페이지',
+    thumbnail: detail015m,
+    preview: detail015s,
+  },
+  {
+    id: 'detail-016',
+    title: 'Electronics Detail Page Design',
+    titleKr: '디프롬 LED 무선 자석 센서등 상세페이지 디자인',
+    category: '상세페이지',
+    thumbnail: detail016m,
+    preview: detail016s,
+  },
+  {
+    id: 'detail-017',
+    title: 'Electronics Detail Page Design',
+    titleKr: '아담 미니가습기 상세페이지 디자인',
+    category: '상세페이지',
+    thumbnail: detail017m,
+    preview: detail017s,
+  },
+  {
+    id: 'detail-018',
+    title: 'Electronics Detail Page Design',
+    titleKr: '몬스터 게임패드 상세페이지 디자인',
+    category: '상세페이지',
+    thumbnail: detail018m,
+    preview: detail018s,
+  },
+  {
+    id: 'detail-019',
+    title: 'Traditional Martial Arts Detail Page Design',
+    titleKr: '40년 전통 수제호구세트 상세페이지 디자인',
+    category: '상세페이지',
+    thumbnail: detail019m,
+    preview: detail019s,
+  },
+  {
     id: 'ops-001',
     title: 'HYUNDAI LNG SHIPPING Additional Page Design & Publishing',
     titleKr: '현대 LNG 해운 웹사이트 추가 페이지 디자인 및 퍼블리싱',
@@ -146,6 +375,62 @@ const PORTFOLIO_ITEMS: (PortfolioItem & { preview?: string; titleKr?: string })[
     preview: detail105s,
   },
   {
+  id: 'ops-007',
+  title: 'Event Page Design',
+  titleKr: '이벤트 페이지 디자인',
+  category: '운영디자인',
+  thumbnail: detail400m,
+  preview: detail400s,
+  },
+  {
+    id: 'ops-008',
+    title: 'Event Page Design',
+    titleKr: '이벤트 페이지 디자인',
+    category: '운영디자인',
+    thumbnail: detail401m,
+    preview: detail401s,
+  },
+  {
+    id: 'ops-009',
+    title: 'Event Page Design',
+    titleKr: '이벤트 페이지 디자인',
+    category: '운영디자인',
+    thumbnail: detail402m,
+    preview: detail402s,
+  },
+  {
+    id: 'ops-010',
+    title: 'Event Page Design',
+    titleKr: '이벤트 페이지 디자인',
+    category: '운영디자인',
+    thumbnail: detail403m,
+    preview: detail403s,
+  },
+  {
+    id: 'ops-011',
+    title: 'Event Page Design',
+    titleKr: '운영디자인 작업',
+    category: '운영디자인',
+    thumbnail: detail404m,
+    preview: detail404s,
+  },
+  {
+    id: 'ops-012',
+    title: 'Event Page Design',
+    titleKr: '이벤트 페이지 디자인',
+    category: '운영디자인',
+    thumbnail: detail405m,
+    preview: detail405s,
+  },
+  {
+    id: 'ops-013',
+    title: 'Event Page Design',
+    titleKr: '이벤트 페이지 디자인',
+    category: '운영디자인',
+    thumbnail: detail406m,
+    preview: detail406s,
+  },
+  {
     id: 'web-001',
     title: 'AI Parking Space Sharing Dashboard',
     titleKr: '자투리 주차장을 위한 인공지능 주차면 공유 시스템',
@@ -168,6 +453,78 @@ const PORTFOLIO_ITEMS: (PortfolioItem & { preview?: string; titleKr?: string })[
     category: '웹사이트',
     thumbnail: detail202m,
     preview: detail202s,
+  },
+  {
+  id: 'web-004',
+  title: 'Kwanghong Website Design',
+  titleKr: '광동제약 웹사이트',
+  category: '웹사이트',
+  thumbnail: detail203m,
+  preview: detail203s,
+  },
+  {
+    id: 'web-005',
+    title: 'HanaShop Website Design',
+    titleKr: '하나샵 웹사이트',
+    category: '웹사이트',
+    thumbnail: detail204m,
+    preview: detail204s,
+  },
+  {
+    id: 'web-006',
+    title: 'JWP ON Website Design',
+    titleKr: '중외제약 JWP ON 웹사이트',
+    category: '웹사이트',
+    thumbnail: detail205m,
+    preview: detail205s,
+  },
+  {
+    id: 'web-007',
+    title: 'LPR Systems Website Design',
+    titleKr: 'LPR 차량통제 시스템',
+    category: '웹사이트',
+    thumbnail: detail206m,
+    preview: detail206s,
+  },
+  {
+    id: 'web-008',
+    title: 'ECS Systems Website Design',
+    titleKr: 'ECS 시스템',
+    category: '웹사이트',
+    thumbnail: detail207m,
+    preview: detail207s,
+  },
+  {
+    id: 'web-009',
+    title: 'IBK Bank Mobile Design',
+    titleKr: 'IBK 기업은행 모바일 디자인',
+    category: '웹사이트',
+    thumbnail: detail208m,
+    preview: detail208s,
+  },
+  {
+    id: 'web-010',
+    title: 'Kwanghong Mobile Design',
+    titleKr: '광동제약 모바일 디자인',
+    category: '웹사이트',
+    thumbnail: detail209m,
+    preview: detail209s,
+  },
+  {
+    id: 'web-011',
+    title: 'nh investment & securities mobile design',
+    titleKr: 'NH투자증권 모바일 디자인',
+    category: '웹사이트',
+    thumbnail: detail210m,
+    preview: detail210s,
+  },
+  {
+    id: 'web-012',
+    title: 'JW pharma Mobile Design',
+    titleKr: '중외제약 모바일 디자인',
+    category: '웹사이트',
+    thumbnail: detail211m,
+    preview: detail211s,
   },
   {
     id: 'ppt-001',
@@ -204,6 +561,8 @@ const ImageModal: React.FC<ImageModalProps> = ({
   canPrev,
   canNext,
 }) => {
+  const scrollRef = useRef<HTMLDivElement | null>(null);
+
   useEffect(() => {
     if (!isOpen) return;
 
@@ -222,6 +581,14 @@ const ImageModal: React.FC<ImageModalProps> = ({
       document.body.style.overflow = prevOverflow;
     };
   }, [isOpen, onClose, onPrev, onNext]);
+
+  // ✅ Next/Prev로 이미지가 바뀔 때마다 스크롤을 최상단으로
+  useEffect(() => {
+    if (!isOpen) return;
+    const el = scrollRef.current;
+    if (!el) return;
+    el.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+  }, [isOpen, data?.imageUrl]);
 
   if (!isOpen || !data) return null;
 
@@ -287,7 +654,7 @@ const ImageModal: React.FC<ImageModalProps> = ({
           </div>
         </div>
 
-        <div className="max-h-[80vh] overflow-y-auto">
+        <div ref={scrollRef} className="max-h-[80vh] overflow-y-auto">
           <img src={data.imageUrl} alt={data.title} className="w-full h-auto object-contain" />
         </div>
 
@@ -311,7 +678,7 @@ const Hero: React.FC = () => (
         </div>
 
         <h1 className="text-[12vw] sm:text-[10vw] font-serif font-black leading-[0.85] editorial-spacing tracking-tighter">
-          Visual <br />
+          Visual<br />
           <span className="italic font-normal ml-[5vw]">Intelligence.</span>
         </h1>
 
@@ -465,12 +832,7 @@ const GallerySection: React.FC = () => {
                   {item.title}
                 </h3>
 
-                <Link
-                  to={`/work/${item.id}`}
-                  className="inline-block text-[9px] font-bold uppercase tracking-[0.3em] border-b border-black pb-1 pt-2"
-                >
-                  Discover
-                </Link>
+
               </div>
 
               <button

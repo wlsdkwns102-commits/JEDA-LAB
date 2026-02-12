@@ -40,17 +40,17 @@ const Navbar: React.FC = () => {
 
         {/* Desktop Menu */}
         <div className="hidden md:flex space-x-12 text-[10px] font-bold tracking-[0.2em] uppercase text-zinc-400">
-          <button onClick={() => scrollToSection('#work')} className="hover:text-black transition">Work</button>
-          <button onClick={() => scrollToSection('#contact')} className="hover:text-black transition">Contact</button>
+          {/* <button onClick={() => scrollToSection('#work')} className="hover:text-black transition">Work</button>
+          <button onClick={() => scrollToSection('#contact')} className="hover:text-black transition">Contact</button> */}
         </div>
 
         <div className="flex items-center space-x-8">
-          <button
+          {/*<button
             onClick={() => scrollToSection('#contact')}
             className="hidden sm:block text-[10px] font-bold uppercase tracking-[0.2em] border-b border-black pb-1 hover:text-zinc-400 hover:border-zinc-400 transition"
           >
             Inquiry
-          </button>
+          </button>*/}
 
           <button
             onClick={toggleMenu}
@@ -66,8 +66,8 @@ const Navbar: React.FC = () => {
       {/* Mobile Menu */}
       <div className={`fixed inset-0 bg-white z-40 transition-all duration-700 ease-in-out ${isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
         <div className="flex flex-col h-full justify-center px-12 sm:px-24 space-y-4">
-          <button onClick={() => scrollToSection('#work')} className="text-6xl sm:text-8xl font-serif font-bold text-left hover:italic transition-all duration-500">Work</button>
-          <button onClick={() => scrollToSection('#contact')} className="text-6xl sm:text-8xl font-serif font-bold text-left hover:italic transition-all duration-500">Contact</button>
+          {/* <button onClick={() => scrollToSection('#work')} className="text-6xl sm:text-8xl font-serif font-bold text-left hover:italic transition-all duration-500">Work</button>
+          <button onClick={() => scrollToSection('#contact')} className="text-6xl sm:text-8xl font-serif font-bold text-left hover:italic transition-all duration-500">Contact</button> */}
           <div className="pt-20">
              <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-zinc-300 mb-4">Direct Connection</p>
              <p className="text-xl font-serif italic">wlsdkwns@gmail.com</p>
@@ -89,7 +89,7 @@ const Footer: React.FC = () => {
               우리는 디자인이 비즈니스 문제를 해결하는 가장 강력한 언어라고 믿습니다.
             </p>
             <div className="flex space-x-8 text-[10px] font-bold uppercase tracking-widest">
-                <a href="#" className="hover:text-zinc-400 transition">Instagram</a>
+                {/* <a href="#" className="hover:text-zinc-400 transition">Instagram</a> */}
             </div>
           </div>
 
