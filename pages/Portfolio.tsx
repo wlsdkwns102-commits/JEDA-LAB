@@ -47,9 +47,6 @@ import detail202s from '../assets/images/detail-202-s.webp';
 import detail300m from '../assets/images/detail-300-m.webp';
 import detail300s from '../assets/images/detail-300-s.webp';
 
-
-
-
 // ✅ 팀 프로필 로컬 이미지 import (추가!)
 import user01 from '../assets/images/user-01.webp';
 import user02 from '../assets/images/user-02.webp';
@@ -60,8 +57,7 @@ import user03 from '../assets/images/user-03.webp';
  * - 탭 이름: WORK_CATEGORIES
  * - 포트폴리오 목록: PORTFOLIO_ITEMS
  */
-// const WORK_CATEGORIES = ['ALL', '웹사이트', '상세페이지', '운영유지보수'] as const;
-const WORK_CATEGORIES = ['ALL', '웹사이트', '상세페이지', '운영디자인', '제안서·프레젠테이션'] as const;
+const WORK_CATEGORIES = ['ALL', '운영디자인', '웹사이트', '상세페이지', '제안서·프레젠테이션'] as const;
 
 // ✅ (옵션) 기본 썸네일 URL (다른 항목용)
 const THUMBNAIL_URL = 'https://images.pexels.com/photos/35571707/pexels-photo-35571707.jpeg';
@@ -180,8 +176,8 @@ const PORTFOLIO_ITEMS: (PortfolioItem & { preview?: string; titleKr?: string })[
 ];
 
 type ModalData = {
-  title: string; // 영문
-  titleKr?: string; // 한글(프리텐다드)
+  title: string;
+  titleKr?: string;
   imageUrl: string;
 };
 
@@ -350,7 +346,7 @@ const Hero: React.FC = () => (
   </section>
 );
 
-/** ✅ What we solve 영역 (첫 번째 코드의 Problems 그대로) */
+/** ✅ What we solve 영역 */
 const Problems: React.FC = () => (
   <section className="py-40 bg-white px-6 sm:px-12 border-y border-zinc-100">
     <div className="max-w-[1800px] mx-auto">
@@ -391,17 +387,24 @@ const GallerySection: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState<number>(-1);
 
   const filteredItems = useMemo(() => {
-    return filter === 'ALL' ? items : items.filter((item) => item.category === filter);
+    const categoryOrder = ['운영디자인', '웹사이트', '상세페이지', '제안서·프레젠테이션'];
+
+    const result =
+      filter === 'ALL'
+        ? [...items]
+        : items.filter((item) => item.category === filter);
+
+    return result.sort(
+      (a, b) => categoryOrder.indexOf(a.category) - categoryOrder.indexOf(b.category)
+    );
   }, [filter, items]);
 
-  // ✅ 더보기 제거: 필터된 항목 전체를 그대로 사용
   const displayItems = filteredItems;
 
   const gridColsClass =
     columns === 2 ? 'grid-cols-1 sm:grid-cols-2' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3';
 
   const openModalByItem = (item: PortfolioItem & { preview?: string; titleKr?: string }) => {
-    // ✅ displayItems가 전체라서 인덱스도 전체 기준으로 잡힘
     const idx = displayItems.findIndex((x) => x.id === item.id);
     setActiveIndex(idx);
     setModalOpen(true);
@@ -509,8 +512,7 @@ const GallerySection: React.FC = () => {
   );
 };
 
-
-/** ✅ Methodology 영역 (첫 번째 코드의 Process 그대로) */
+/** ✅ Methodology 영역 */
 const Process: React.FC = () => (
   <section className="py-40 bg-zinc-950 text-white px-6 sm:px-12">
     <div className="max-w-[1800px] mx-auto">
@@ -550,46 +552,37 @@ const Process: React.FC = () => (
   </section>
 );
 
-/** ✅ Start a Project 영역 (첫 번째 코드의 ContactSection 그대로) */
+/** ✅ Start a Project 영역 */
 const ContactSection: React.FC = () => {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  // const handleSubmit = (e: React.FormEvent) => {
-  //   e.preventDefault();
-  //   setLoading(true);
-  //   setTimeout(() => {
-  //     setLoading(false);
-  //     setSubmitted(true);
-  //   }, 1500);
-  // };
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-  e.preventDefault();
-  setLoading(true);
+    e.preventDefault();
+    setLoading(true);
 
-  const formData = new FormData(e.currentTarget);
+    const formData = new FormData(e.currentTarget);
 
-  try {
-    const response = await fetch('https://formspree.io/f/mpqrqeje', {
-      method: 'POST',
-      body: formData,
-      headers: { Accept: 'application/json' },
-    });
+    try {
+      const response = await fetch('https://formspree.io/f/mpqrqeje', {
+        method: 'POST',
+        body: formData,
+        headers: { Accept: 'application/json' },
+      });
 
-    if (response.ok) {
-      setSubmitted(true);
-      e.currentTarget.reset(); // 선택: 전송 후 폼 비우기
-    } else {
-      alert('문의 제출 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.');
+      if (response.ok) {
+        setSubmitted(true);
+        e.currentTarget.reset();
+      } else {
+        alert('문의 제출 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.');
+      }
+    } catch (err) {
+      console.error(err);
+      alert('네트워크 오류가 발생했습니다.');
+    } finally {
+      setLoading(false);
     }
-  } catch (err) {
-    console.error(err);
-    alert('네트워크 오류가 발생했습니다.');
-  } finally {
-    setLoading(false);
-  }
-};
+  };
 
   if (submitted) {
     return (
@@ -635,12 +628,18 @@ const ContactSection: React.FC = () => {
                 >
                   <div className="absolute top-0 left-0 w-1.5 h-full bg-[#FEE500]"></div>
                   <div className="relative z-10 flex flex-col items-start transition-opacity duration-300 group-hover:opacity-0">
-                    <span className="text-[8px] font-black uppercase tracking-[0.2em] text-zinc-400 group-hover:text-white/50 mb-1">카카오톡 문의</span>
+                    <span className="text-[8px] font-black uppercase tracking-[0.2em] text-zinc-400 group-hover:text-white/50 mb-1">
+                      카카오톡 문의
+                    </span>
                     <span className="text-[10px] font-black uppercase tracking-[0.3em]">Connect KakaoTalk</span>
                   </div>
-                  <span className="relative z-10 text-xl transform transition-all duration-300 group-hover:translate-x-2 group-hover:text-black">→</span>
+                  <span className="relative z-10 text-xl transform transition-all duration-300 group-hover:translate-x-2 group-hover:text-black">
+                    →
+                  </span>
                   <div className="absolute inset-0 bg-[#FEE500] translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
-                  <span className="absolute inset-0 flex items-center justify-center text-black text-[10px] font-black uppercase tracking-[0.3em] translate-y-full group-hover:translate-y-0 transition-transform duration-500">Open Kakao Chat</span>
+                  <span className="absolute inset-0 flex items-center justify-center text-black text-[10px] font-black uppercase tracking-[0.3em] translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+                    Open Kakao Chat
+                  </span>
                 </a>
               </div>
             </div>
