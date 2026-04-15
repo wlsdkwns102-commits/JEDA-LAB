@@ -314,8 +314,7 @@ const Hero: React.FC = () => (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 pt-20 items-end">
           <div className="lg:col-span-5">
             <p className="text-xl sm:text-2xl text-zinc-500 font-light leading-relaxed max-w-lg">
-              우리는 단순한 '아름다움'을 넘어, 비즈니스의 본질을 꿰뚫는 전략적 디자인을 통해 복잡한 문제를 명쾌한 시각적
-              솔루션으로 풀어냅니다.
+            우리는 ‘예쁜 디자인’ 그 이상을 고민합니다. 비즈니스의 본질을 깊이 이해하고, 복잡한 이야기를 누구나 공감할 수 있는 시각적 경험으로 풀어냅니다.
             </p>
           </div>
 
