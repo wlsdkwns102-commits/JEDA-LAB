@@ -602,9 +602,7 @@ const ImageModal: React.FC<ImageModalProps> = ({
       <div className="absolute inset-0 bg-black/60" onMouseDown={onClose} />
 
       <div
-        className="relative z-10 w-[min(1100px,92vw)] bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col"
-        onMouseDown={(e) => e.stopPropagation()}
-      >
+        className="relative z-10 w-[min(1100px,92vw)] bg-white text-black rounded-2xl shadow-2xl overflow-hidden flex flex-col" onMouseDown={(e) => e.stopPropagation()}>
         <div className="flex items-center justify-between px-6 py-5 border-b border-zinc-100">
           <div className="min-w-0">
             <h3 className="text-xl font-serif font-bold truncate">{data.title}</h3>
@@ -668,7 +666,7 @@ const ImageModal: React.FC<ImageModalProps> = ({
 };
 
 const Hero: React.FC = () => (
-  <section id="hero" className="relative min-h-screen flex items-center bg-white px-6 sm:px-12 pt-20">
+  <section id="hero" className="relative min-h-screen flex items-center bg-black px-6 sm:px-12 pt-20">
     <div className="max-w-[1800px] mx-auto w-full">
       <div className="space-y-12">
         <div className="overflow-hidden">
@@ -684,7 +682,7 @@ const Hero: React.FC = () => (
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 pt-20 items-end">
           <div className="lg:col-span-5">
-            <p className="text-xl sm:text-2xl text-zinc-500 font-light leading-relaxed max-w-lg">
+            <p className="text-xl sm:text-2xl text-zinc-300 font-light leading-relaxed max-w-lg">
             우리는 ‘예쁜 디자인’ 그 이상을 고민합니다. 비즈니스의 본질을 깊이 이해하고, 복잡한 이야기를 누구나 공감할 수 있는 시각적 경험으로 풀어냅니다.
             </p>
           </div>
@@ -718,7 +716,7 @@ const Hero: React.FC = () => (
 
 /** ✅ What we solve 영역 (첫 번째 코드의 Problems 그대로) */
 const Problems: React.FC = () => (
-  <section className="py-40 bg-white px-6 sm:px-12 border-y border-zinc-100">
+  <section className="py-40 bg-black px-6 sm:px-12 border-y border-zinc-800">
     <div className="max-w-[1800px] mx-auto">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-20">
         <div className="lg:col-span-4">
@@ -738,7 +736,7 @@ const Problems: React.FC = () => (
             <div key={idx} className="space-y-6">
               <span className="text-[10px] font-mono text-zinc-300">0{idx + 1}</span>
               <h4 className="text-xl font-bold">{item.title}</h4>
-              <p className="text-zinc-600 text-lg leading-relaxed font-light">{item.desc}</p>
+              <p className="text-zinc-200 text-lg leading-relaxed font-light">{item.desc}</p>
             </div>
           ))}
         </div>
@@ -794,7 +792,7 @@ const GallerySection: React.FC = () => {
       : null;
 
   return (
-    <section id="work" className="py-40 bg-white px-6 sm:px-12">
+    <section id="work" className="py-40 bg-black px-6 sm:px-12">
       <div className="max-w-[1800px] mx-auto">
         <div className="flex flex-col lg:flex-row justify-between lg:items-end mb-24 space-y-12 lg:space-y-0">
           <div>
@@ -820,9 +818,9 @@ const GallerySection: React.FC = () => {
           </div>
         </div>
 
-        <div className={`grid ${gridColsClass} gap-px bg-white border-zinc-100 border-x-px border-t-px`}>
+        <div className={`grid ${gridColsClass} gap-px bg-black border-zinc-800 border-x-px border-t-px`}>
           {displayItems.map((item) => (
-            <div key={item.id} className="group bg-white p-8 sm:p-14 hover-lift border-b border-zinc-100">
+            <div key={item.id} className="group bg-black p-8 sm:p-14 hover-lift border-b border-zinc-800">
               <div className="space-y-6 mb-12">
                 <span className="text-[10px] uppercase font-bold tracking-[0.3em] text-zinc-300 block">
                   {item.category}
@@ -837,7 +835,7 @@ const GallerySection: React.FC = () => {
               <button
                 type="button"
                 onClick={() => openModalByItem(item as any)}
-                className="block w-full overflow-hidden aspect-[4/3] bg-white focus:outline-none"
+                className="block w-full overflow-hidden aspect-[4/3] bg-black focus:outline-none"
                 aria-label={`${item.title} 이미지 미리보기 열기`}
               >
                 <img
@@ -894,7 +892,7 @@ const TeamSection: React.FC = () => {
   ];
 
   return (
-    <section className="pb-40 pt-0 bg-white px-6 sm:px-12 relative">
+    <section className="pb-40 pt-0 bg-black px-6 sm:px-12 relative">
       <div className="max-w-[1800px] mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-20 pb-16">
           <div>
@@ -951,7 +949,7 @@ const Process: React.FC = () => (
           </h3>
         </div>
         <div className="lg:col-span-7 flex items-end">
-          <p className="text-zinc-500 text-lg font-light leading-relaxed max-w-md">
+          <p className="text-zinc-300 text-lg font-light leading-relaxed max-w-md">
             우리는 모든 단계를 데이터와 논리에 근거하여 진행합니다. 투명한 프로세스는 클라이언트와 우리 사이의 가장 단단한
             신뢰가 됩니다.
           </p>
@@ -970,7 +968,7 @@ const Process: React.FC = () => (
             <span className="block text-4xl font-serif italic text-zinc-800">{item.step}</span>
             <div className="space-y-4">
               <h4 className="text-[10px] font-bold uppercase tracking-[0.3em]">{item.title}</h4>
-              <p className="text-zinc-500 text-xs leading-relaxed font-light">{item.desc}</p>
+              <p className="text-zinc-300 text-xs leading-relaxed font-light">{item.desc}</p>
             </div>
           </div>
         ))}
@@ -1022,10 +1020,10 @@ const ContactSection: React.FC = () => {
 
   if (submitted) {
     return (
-      <section id="contact" className="py-60 bg-white flex items-center justify-center px-6">
+      <section id="contact" className="py-60 bg-black flex items-center justify-center px-6">
         <div className="max-w-xl text-center">
           <h2 className="text-8xl font-serif italic editorial-spacing mb-8">Confirmed.</h2>
-          <p className="text-zinc-500 text-lg font-light leading-relaxed mb-12">
+          <p className="text-zinc-300 text-lg font-light leading-relaxed mb-12">
             문의가 성공적으로 접수되었습니다. <br />
             24시간 내에 전문 디렉터가 연락드리겠습니다.
           </p>
@@ -1041,7 +1039,7 @@ const ContactSection: React.FC = () => {
   }
 
   return (
-    <section id="contact" className="py-40 bg-white px-6 sm:px-12">
+    <section id="contact" className="py-40 bg-black px-6 sm:px-12">
       <div className="max-w-[1800px] mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-32">
           <div className="lg:col-span-5 space-y-16">
@@ -1135,7 +1133,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="fade-in scroll-smooth">
+     <div className="fade-in scroll-smooth bg-black text-white min-h-screen">
       <Hero />
       <Problems />
       <GallerySection />

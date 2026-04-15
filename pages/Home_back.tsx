@@ -63,7 +63,7 @@ import detail018s from '../assets/images/detail-018-s.webp';
 import detail019m from '../assets/images/detail-019-m.webp';
 import detail019s from '../assets/images/detail-019-s.webp';
 
-//유지보수
+//운영디자인
 import detail100m from '../assets/images/detail-100-m.webp';
 import detail100s from '../assets/images/detail-100-s.webp';
 
@@ -81,6 +81,31 @@ import detail104s from '../assets/images/detail-104-s.webp';
 
 import detail105m from '../assets/images/detail-105-m.webp';
 import detail105s from '../assets/images/detail-105-s.webp';
+
+
+//이벤트페이지
+import detail400m from '../assets/images/detail-400-m.webp';
+import detail400s from '../assets/images/detail-400-s.webp';
+
+import detail401m from '../assets/images/detail-401-m.webp';
+import detail401s from '../assets/images/detail-401-s.webp';
+
+import detail402m from '../assets/images/detail-402-m.webp';
+import detail402s from '../assets/images/detail-402-s.webp';
+
+import detail403m from '../assets/images/detail-403-m.webp';
+import detail403s from '../assets/images/detail-403-s.webp';
+
+import detail404m from '../assets/images/detail-404-m.webp';
+import detail404s from '../assets/images/detail-404-s.webp';
+
+import detail405m from '../assets/images/detail-405-m.webp';
+import detail405s from '../assets/images/detail-405-s.webp';
+
+import detail406m from '../assets/images/detail-406-m.webp';
+import detail406s from '../assets/images/detail-406-s.webp';
+
+
 
 //웹사이트
 import detail200m from '../assets/images/detail-200-m.webp';
@@ -149,6 +174,158 @@ const THUMBNAIL_URL = 'https://images.pexels.com/photos/35571707/pexels-photo-35
  * - titleKr: 모달 상단에 표시할 한글 타이틀(프리텐다드)
  */
 const PORTFOLIO_ITEMS: (PortfolioItem & { preview?: string; titleKr?: string })[] = [
+  {
+    id: 'ops-001',
+    title: 'HYUNDAI LNG SHIPPING Additional Page Design & Publishing',
+    titleKr: '현대 LNG 해운 웹사이트 추가 페이지 디자인 및 퍼블리싱',
+    category: '운영디자인',
+    thumbnail: detail100m,
+    preview: detail100s,
+  },
+  {
+    id: 'ops-002',
+    title: 'Lunit Website Operation, Design & Publishing',
+    titleKr: '루닛 웹사이트 유지보수 운영 디자인 및 퍼블리싱',
+    category: '운영디자인',
+    thumbnail: detail101m,
+    preview: detail101s,
+  },
+  {
+    id: 'ops-003',
+    title: 'b.stage Website Operation, Design & Publishing',
+    titleKr: '비스테이지 웹사이트 유지보수 운영 디자인 및 퍼블리싱',
+    category: '운영디자인',
+    thumbnail: detail102m,
+    preview: detail102s,
+  },
+  {
+    id: 'ops-004',
+    title: 'Galaxy To Go Service Website Operation & Publishing',
+    titleKr: '갤럭시투고서비스 유지보수 운영 및 퍼블리싱',
+    category: '운영디자인',
+    thumbnail: detail103m,
+    preview: detail103s,
+  },
+  {
+    id: 'ops-005',
+    title: 'HYBE INSIGHT Website Operation, Design & Publishing',
+    titleKr: '하이브 인사이트 웹사이트 유지보수 운영 디자인 및 퍼블리싱',
+    category: '운영디자인',
+    thumbnail: detail104m,
+    preview: detail104s,
+  },
+  {
+    id: 'ops-006',
+    title: 'Samsung Mobile Press Website Operation, Design & Publishing',
+    titleKr: '모바일 프레스 운영 디자인 및 퍼블리싱',
+    category: '운영디자인',
+    thumbnail: detail105m,
+    preview: detail105s,
+  },
+  {
+    id: 'web-001',
+    title: 'AI Parking Space Sharing Dashboard',
+    titleKr: '자투리 주차장을 위한 인공지능 주차면 공유 시스템',
+    category: '웹사이트',
+    thumbnail: detail200m,
+    preview: detail200s,
+  },
+  {
+    id: 'web-002',
+    title: 'bemyfriends Admin',
+    titleKr: '비마이프렌즈 어드민',
+    category: '웹사이트',
+    thumbnail: detail201m,
+    preview: detail201s,
+  },
+  {
+    id: 'web-003',
+    title: 'MR Metaverse Developers',
+    titleKr: '인천 XR 메타버스',
+    category: '웹사이트',
+    thumbnail: detail202m,
+    preview: detail202s,
+  },
+  {
+  id: 'web-004',
+  title: 'Kwanghong Website Design',
+  titleKr: '광동제약 웹사이트',
+  category: '웹사이트',
+  thumbnail: detail203m,
+  preview: detail203s,
+  },
+  {
+    id: 'web-005',
+    title: 'HanaShop Website Design',
+    titleKr: '하나샵 웹사이트',
+    category: '웹사이트',
+    thumbnail: detail204m,
+    preview: detail204s,
+  },
+  {
+    id: 'web-006',
+    title: 'JWP ON Website Design',
+    titleKr: '중외제약 JWP ON 웹사이트',
+    category: '웹사이트',
+    thumbnail: detail205m,
+    preview: detail205s,
+  },
+  {
+    id: 'web-007',
+    title: 'LPR Systems Website Design',
+    titleKr: 'LPR 차량통제 시스템',
+    category: '웹사이트',
+    thumbnail: detail206m,
+    preview: detail206s,
+  },
+  {
+    id: 'web-008',
+    title: 'ECS Systems Website Design',
+    titleKr: 'ECS 시스템',
+    category: '웹사이트',
+    thumbnail: detail207m,
+    preview: detail207s,
+  },
+  {
+    id: 'web-009',
+    title: 'IBK Bank Mobile Design',
+    titleKr: 'IBK 기업은행 모바일 디자인',
+    category: '웹사이트',
+    thumbnail: detail208m,
+    preview: detail208s,
+  },
+  {
+    id: 'web-010',
+    title: 'Kwanghong Mobile Design',
+    titleKr: '광동제약 모바일 디자인',
+    category: '웹사이트',
+    thumbnail: detail209m,
+    preview: detail209s,
+  },
+  {
+    id: 'web-011',
+    title: 'nh investment & securities mobile design',
+    titleKr: 'NH투자증권 모바일 디자인',
+    category: '웹사이트',
+    thumbnail: detail210m,
+    preview: detail210s,
+  },
+  {
+    id: 'web-012',
+    title: 'JW pharma Mobile Design',
+    titleKr: '중외제약 모바일 디자인',
+    category: '웹사이트',
+    thumbnail: detail211m,
+    preview: detail211s,
+  },
+  {
+    id: 'ppt-001',
+    title: 'KIRBY Korea Business Proposal Design',
+    titleKr: '컬비 코리아 제안서 디자인',
+    category: '제안서·프레젠테이션',
+    thumbnail: detail300m,
+    preview: detail300s,
+  },
   {
     id: 'detail-001',
     title: 'Travel Tour Detail Page Design',
@@ -302,156 +479,60 @@ const PORTFOLIO_ITEMS: (PortfolioItem & { preview?: string; titleKr?: string })[
     preview: detail019s,
   },
   {
-    id: 'ops-001',
-    title: 'HYUNDAI LNG SHIPPING Additional Page Design & Publishing',
-    titleKr: '현대 LNG 해운 웹사이트 추가 페이지 디자인 및 퍼블리싱',
+  id: 'ops-007',
+  title: 'Event Page Design',
+  titleKr: '이벤트 페이지 디자인',
+  category: '운영디자인',
+  thumbnail: detail400m,
+  preview: detail400s,
+  },
+  {
+    id: 'ops-008',
+    title: 'Event Page Design',
+    titleKr: '이벤트 페이지 디자인',
     category: '운영디자인',
-    thumbnail: detail100m,
-    preview: detail100s,
+    thumbnail: detail401m,
+    preview: detail401s,
   },
   {
-    id: 'ops-002',
-    title: 'Lunit Website Operation, Design & Publishing',
-    titleKr: '루닛 웹사이트 유지보수 운영 디자인 및 퍼블리싱',
+    id: 'ops-009',
+    title: 'Event Page Design',
+    titleKr: '이벤트 페이지 디자인',
     category: '운영디자인',
-    thumbnail: detail101m,
-    preview: detail101s,
+    thumbnail: detail402m,
+    preview: detail402s,
   },
   {
-    id: 'ops-003',
-    title: 'b.stage Website Operation, Design & Publishing',
-    titleKr: '비스테이지 웹사이트 유지보수 운영 디자인 및 퍼블리싱',
+    id: 'ops-010',
+    title: 'Event Page Design',
+    titleKr: '이벤트 페이지 디자인',
     category: '운영디자인',
-    thumbnail: detail102m,
-    preview: detail102s,
+    thumbnail: detail403m,
+    preview: detail403s,
   },
   {
-    id: 'ops-004',
-    title: 'Galaxy To Go Service Website Operation & Publishing',
-    titleKr: '갤럭시투고서비스 유지보수 운영 및 퍼블리싱',
+    id: 'ops-011',
+    title: 'Event Page Design',
+    titleKr: '운영디자인 작업',
     category: '운영디자인',
-    thumbnail: detail103m,
-    preview: detail103s,
+    thumbnail: detail404m,
+    preview: detail404s,
   },
   {
-    id: 'ops-005',
-    title: 'HYBE INSIGHT Website Operation, Design & Publishing',
-    titleKr: '하이브 인사이트 웹사이트 유지보수 운영 디자인 및 퍼블리싱',
+    id: 'ops-012',
+    title: 'Event Page Design',
+    titleKr: '이벤트 페이지 디자인',
     category: '운영디자인',
-    thumbnail: detail104m,
-    preview: detail104s,
+    thumbnail: detail405m,
+    preview: detail405s,
   },
   {
-    id: 'ops-006',
-    title: 'Samsung Mobile Press Website Operation, Design & Publishing',
-    titleKr: '모바일 프레스 운영 디자인 및 퍼블리싱',
+    id: 'ops-013',
+    title: 'Event Page Design',
+    titleKr: '이벤트 페이지 디자인',
     category: '운영디자인',
-    thumbnail: detail105m,
-    preview: detail105s,
-  },
-  {
-    id: 'web-001',
-    title: 'AI Parking Space Sharing Dashboard',
-    titleKr: '자투리 주차장을 위한 인공지능 주차면 공유 시스템',
-    category: '웹사이트',
-    thumbnail: detail200m,
-    preview: detail200s,
-  },
-  {
-    id: 'web-002',
-    title: 'bemyfriends Admin',
-    titleKr: '비마이프렌즈 어드민',
-    category: '웹사이트',
-    thumbnail: detail201m,
-    preview: detail201s,
-  },
-  {
-    id: 'web-003',
-    title: 'MR Metaverse Developers',
-    titleKr: '인천 XR 메타버스',
-    category: '웹사이트',
-    thumbnail: detail202m,
-    preview: detail202s,
-  },
-  {
-  id: 'web-004',
-  title: 'Kwanghong Website Design',
-  titleKr: '광동제약 웹사이트',
-  category: '웹사이트',
-  thumbnail: detail203m,
-  preview: detail203s,
-  },
-  {
-    id: 'web-005',
-    title: 'HanaShop Website Design',
-    titleKr: '하나샵 웹사이트',
-    category: '웹사이트',
-    thumbnail: detail204m,
-    preview: detail204s,
-  },
-  {
-    id: 'web-006',
-    title: 'JWP ON Website Design',
-    titleKr: '중외제약 JWP ON 웹사이트',
-    category: '웹사이트',
-    thumbnail: detail205m,
-    preview: detail205s,
-  },
-  {
-    id: 'web-007',
-    title: 'LPR Systems Website Design',
-    titleKr: 'LPR 차량통제 시스템',
-    category: '웹사이트',
-    thumbnail: detail206m,
-    preview: detail206s,
-  },
-  {
-    id: 'web-008',
-    title: 'ECS Systems Website Design',
-    titleKr: 'ECS 시스템',
-    category: '웹사이트',
-    thumbnail: detail207m,
-    preview: detail207s,
-  },
-  {
-    id: 'web-009',
-    title: 'IBK Bank Mobile Design',
-    titleKr: 'IBK 기업은행 모바일 디자인',
-    category: '웹사이트',
-    thumbnail: detail208m,
-    preview: detail208s,
-  },
-  {
-    id: 'web-010',
-    title: 'Kwanghong Mobile Design',
-    titleKr: '광동제약 모바일 디자인',
-    category: '웹사이트',
-    thumbnail: detail209m,
-    preview: detail209s,
-  },
-  {
-    id: 'web-011',
-    title: 'nh investment & securities mobile design',
-    titleKr: 'NH투자증권 모바일 디자인',
-    category: '웹사이트',
-    thumbnail: detail210m,
-    preview: detail210s,
-  },
-  {
-    id: 'web-012',
-    title: 'JW pharma Mobile Design',
-    titleKr: '중외제약 모바일 디자인',
-    category: '웹사이트',
-    thumbnail: detail211m,
-    preview: detail211s,
-  },
-  {
-    id: 'ppt-001',
-    title: 'KIRBY Korea Business Proposal Design',
-    titleKr: '컬비 코리아 제안서 디자인',
-    category: '제안서·프레젠테이션',
-    thumbnail: detail300m,
-    preview: detail300s,
+    thumbnail: detail406m,
+    preview: detail406s,
   },
 ];
 
@@ -604,8 +685,7 @@ const Hero: React.FC = () => (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 pt-20 items-end">
           <div className="lg:col-span-5">
             <p className="text-xl sm:text-2xl text-zinc-500 font-light leading-relaxed max-w-lg">
-              우리는 단순한 '아름다움'을 넘어, 비즈니스의 본질을 꿰뚫는 전략적 디자인을 통해 복잡한 문제를 명쾌한 시각적
-              솔루션으로 풀어냅니다.
+            우리는 ‘예쁜 디자인’ 그 이상을 고민합니다. 비즈니스의 본질을 깊이 이해하고, 복잡한 이야기를 누구나 공감할 수 있는 시각적 경험으로 풀어냅니다.
             </p>
           </div>
 

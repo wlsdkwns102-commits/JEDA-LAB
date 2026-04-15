@@ -34,9 +34,9 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${scrolled ? 'bg-white/95 backdrop-blur-md py-4 border-b border-zinc-100' : 'bg-transparent py-8'}`}>
+    <nav className={`fixed top-0 left-0 w-full z-50 border-b border-zinc-800 transition-all duration-500 ${scrolled ? 'bg-black/95 backdrop-blur-md py-4' : 'bg-transparent py-5'}`}>
       <div className="max-w-[1800px] mx-auto px-6 sm:px-12 flex items-center justify-between">
-        <Link to="/" className="text-xl font-serif font-black tracking-tighter editorial-spacing">Jace LAB</Link>
+        <Link to="/" className="text-xl font-serif font-black tracking-tighter editorial-spacing text-white">Jace LAB</Link>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex space-x-12 text-[10px] font-bold tracking-[0.2em] uppercase text-zinc-400">
@@ -54,23 +54,35 @@ const Navbar: React.FC = () => {
 
           <button
             onClick={toggleMenu}
-            className="flex flex-col justify-center items-end space-y-1 w-6 h-6 focus:outline-none z-50 relative"
+            className="relative flex items-center justify-center w-8 h-8 focus:outline-none z-50"
           >
-            <span className={`block h-px bg-black transition-all duration-500 ${isMenuOpen ? 'w-6 rotate-45 translate-y-1' : 'w-6'}`}></span>
-            <span className={`block h-px bg-black transition-all duration-500 ${isMenuOpen ? 'opacity-0' : 'w-4'}`}></span>
-            <span className={`block h-px bg-black transition-all duration-500 ${isMenuOpen ? 'w-6 -rotate-45 -translate-y-1' : 'w-2'}`}></span>
+            <span
+              className={`absolute block w-6 h-[1px] bg-white transition-all duration-300 ${
+                isMenuOpen ? 'rotate-45' : '-translate-y-2'
+              }`}
+            />
+            <span
+              className={`absolute block w-6 h-[1px] bg-white transition-all duration-300 ${
+                isMenuOpen ? 'opacity-0' : 'opacity-100'
+              }`}
+            />
+            <span
+              className={`absolute block w-6 h-[1px] bg-white transition-all duration-300 ${
+                isMenuOpen ? '-rotate-45' : 'translate-y-2'
+              }`}
+            />
           </button>
         </div>
       </div>
 
       {/* Mobile Menu */}
-      <div className={`fixed inset-0 bg-white z-40 transition-all duration-700 ease-in-out ${isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
+      <div className={`fixed inset-0 bg-black z-40 transition-all duration-700 ease-in-out ${isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
         <div className="flex flex-col h-full justify-center px-12 sm:px-24 space-y-4">
           {/* <button onClick={() => scrollToSection('#work')} className="text-6xl sm:text-8xl font-serif font-bold text-left hover:italic transition-all duration-500">Work</button>
           <button onClick={() => scrollToSection('#contact')} className="text-6xl sm:text-8xl font-serif font-bold text-left hover:italic transition-all duration-500">Contact</button> */}
           <div className="pt-20">
-             <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-zinc-300 mb-4">Direct Connection</p>
-             <p className="text-xl font-serif italic">wlsdkwns@gmail.com</p>
+          <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-zinc-500 mb-4">Direct Connection</p>
+          <p className="text-xl font-serif italic text-white">wlsdkwns@gmail.com</p>
           </div>
         </div>
       </div>
