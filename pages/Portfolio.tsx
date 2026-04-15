@@ -78,20 +78,20 @@ const PORTFOLIO_ITEMS: (PortfolioItem & { preview?: string; titleKr?: string })[
     preview: detail001s,
   },
   {
-    id: 'detail-002',
-    title: 'Household Product Detail Page Design',
-    titleKr: '뉴셀클리너 하수구트랩 상세페이지 기획/디자인',
-    category: '상세페이지',
-    thumbnail: detail002m,
-    preview: detail002s,
-  },
-  {
     id: 'detail-003',
     title: 'OSTO Furniture Detail Page Design',
     titleKr: 'OSTO 가구 상세페이지 기획 및 디자인',
     category: '상세페이지',
     thumbnail: detail003m,
     preview: detail003s,
+  },
+  {
+    id: 'detail-002',
+    title: 'Household Product Detail Page Design',
+    titleKr: '뉴셀클리너 하수구트랩 상세페이지 기획/디자인',
+    category: '상세페이지',
+    thumbnail: detail002m,
+    preview: detail002s,
   },
   {
     id: 'ops-001',
