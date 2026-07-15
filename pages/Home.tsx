@@ -63,6 +63,19 @@ import detail018s from '../assets/images/detail-018-s.webp';
 import detail019m from '../assets/images/detail-019-m.webp';
 import detail019s from '../assets/images/detail-019-s.webp';
 
+import detail020m from '../assets/images/detail-020-m.webp';
+import detail020s from '../assets/images/detail-020-s.webp';
+
+import detail021m from '../assets/images/detail-021-m.webp';
+import detail021s from '../assets/images/detail-021-s.webp';
+
+import detail022m from '../assets/images/detail-022-m.webp';
+import detail022s from '../assets/images/detail-022-s.webp';
+
+import detail023m from '../assets/images/detail-023-m.webp';
+import detail023s from '../assets/images/detail-023-s.webp';
+
+
 //운영디자인
 import detail100m from '../assets/images/detail-100-m.webp';
 import detail100s from '../assets/images/detail-100-s.webp';
@@ -317,6 +330,38 @@ const PORTFOLIO_ITEMS: (PortfolioItem & { preview?: string; titleKr?: string })[
     category: '웹사이트',
     thumbnail: detail211m,
     preview: detail211s,
+  },
+  {
+    id: 'detail-023',
+    title: 'Mattress Product Detail Page Design',
+    titleKr: 'M&C아울렛 이편한침대 매트리스 상세페이지 기획/디자인',
+    category: '상세페이지',
+    thumbnail: detail023m,
+    preview: detail023s,
+  },
+  {
+    id: 'detail-020',
+    title: 'Travel Tour Detail Page Design',
+    titleKr: '여행사 투어 상세페이지 기획/디자인',
+    category: '상세페이지',
+    thumbnail: detail020m,
+    preview: detail020s,
+  },
+  {
+    id: 'detail-021',
+    title: 'Travel Tour Detail Page Design',
+    titleKr: '여행사 투어 상세페이지 기획/디자인',
+    category: '상세페이지',
+    thumbnail: detail021m,
+    preview: detail021s,
+  },
+  {
+    id: 'detail-022',
+    title: 'Travel Tour Detail Page Design',
+    titleKr: '여행사 투어 상세페이지 기획/디자인',
+    category: '상세페이지',
+    thumbnail: detail022m,
+    preview: detail022s,
   },
   {
     id: 'ppt-001',
@@ -1127,6 +1172,9 @@ const ContactSection: React.FC = () => {
   );
 };
 
+// Our Team 섹션 노출 여부: 다시 보이게 하려면 true로 변경하세요.
+const SHOW_TEAM_SECTION = false;
+
 export default function Home() {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -1137,7 +1185,7 @@ export default function Home() {
       <Hero />
       <Problems />
       <GallerySection />
-      <TeamSection />
+      {SHOW_TEAM_SECTION && <TeamSection />}
       <Process />
       <ContactSection />
     </div>
