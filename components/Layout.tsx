@@ -82,7 +82,7 @@ const Navbar: React.FC = () => {
           <button onClick={() => scrollToSection('#contact')} className="text-6xl sm:text-8xl font-serif font-bold text-left hover:italic transition-all duration-500">Contact</button> */}
           <div className="pt-20">
           <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-zinc-500 mb-4">Direct Connection</p>
-          <p className="text-xl font-serif italic text-white">wlsdkwns@gmail.com</p>
+          <p className="text-xl font-serif italic text-white">jacedesignlab@naver.com</p>
           </div>
         </div>
       </div>
