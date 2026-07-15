@@ -157,6 +157,9 @@ import detail210s from '../assets/images/detail-210-s.webp';
 import detail211m from '../assets/images/detail-211-m.webp';
 import detail211s from '../assets/images/detail-211-s.webp';
 
+import detail212m from '../assets/images/detail-212-m.webp';
+import detail212s from '../assets/images/detail-212-s.webp';
+
 //프레젠테이션
 import detail300m from '../assets/images/detail-300-m.webp';
 import detail300s from '../assets/images/detail-300-s.webp';
@@ -258,6 +261,14 @@ const PORTFOLIO_ITEMS: (PortfolioItem & { preview?: string; titleKr?: string })[
     category: '웹사이트',
     thumbnail: detail202m,
     preview: detail202s,
+  },
+  {
+    id: 'web-013',
+    title: 'MX Social Governance Management Platform',
+    titleKr: 'MX 소셜 거버넌스 매니지먼트 플랫 디자인/퍼블리싱',
+    category: '웹사이트',
+    thumbnail: detail212m,
+    preview: detail212s,
   },
   {
   id: 'web-004',
